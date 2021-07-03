@@ -1,0 +1,31 @@
+{
+  "name": "gestao-dental",
+  "version": "1.0.0",
+  "main": "build/electron/index.js",
+  "license": "MIT",
+  "scripts": {
+    "electron-watch": "tsc --watch -p main/tsconfig.json",
+    "electron-start": "nodemon -w build/ --exec \"electron . \" ",
+    "electron": "concurrently \" yarn electron-watch \" \" yarn electron-start \" ",
+    "react-start": "webpack --watch --mode=development",
+    "start": "concurrently \" yarn electron\" \"yarn react-start\""
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/react": "^17.0.13",
+    "@types/react-dom": "^17.0.8",
+    "babel-loader": "^8.2.2",
+    "concurrently": "^6.2.0",
+    "electron": "^13.1.5",
+    "html-webpack-plugin": "^5.3.2",
+    "nodemon": "^2.0.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.3.5",
+    "webpack": "^5.42.0",
+    "webpack-cli": "^4.7.2"
+  }
+}
