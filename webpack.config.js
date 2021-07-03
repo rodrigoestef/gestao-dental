@@ -28,5 +28,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ title: "Gestão dental" })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Gestão dental",
+      template: path.resolve(__dirname, "template.html"),
+    }),
+  ],
 };
