@@ -17,11 +17,26 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
+        test: /.(svg)$/,
+        use: ["@svgr/webpack", "url-loader"],
+      },
+      {
         test: /.(ts|tsx|js)$/,
         exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
           options: {
+            plugins: [
+              [
+                "module-resolver",
+                {
+                  alias: {
+                    "@components": "./rendered/components",
+                    "@assets": "./rendered/assets",
+                  },
+                },
+              ],
+            ],
             presets: [
               "@babel/preset-env",
               "@babel/preset-react",
