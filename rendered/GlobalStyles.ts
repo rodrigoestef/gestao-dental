@@ -4,16 +4,20 @@ export default createGlobalStyle`
     
     #app{
         height: 100vh; 
-        background-color: #f5f5f5;
+        background-color: var(--bg-color);
         padding:  40px 40px;
+    }
+    #container{
+        height: 100%;
     }
     body{   
         margin: 0;
         font-family:'Roboto';
     }
     :root{
-        --primary-color:#3f51b5;
-        --hover-primary-color:#3f78b5;
+        --primary-color:#001e62;
+        --hover-primary-color:#5c88da;
+        --bg-color:#f5f5f5;
     }
 
 `;

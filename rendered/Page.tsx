@@ -9,11 +9,9 @@ const Page: React.FC = () => {
       <Grid item>
         <SearchAndRegister />
       </Grid>
-      <Grid item>
-        <Box overflow="auto" height="400px" bgcolor="red">
-          page
-        </Box>
-      </Grid>
+      <Box height="100%" padding="16px" bgcolor="var(--bg-color)">
+        <Card>grid</Card>
+      </Box>
     </Grid>
   );
 };

@@ -15,8 +15,13 @@ const SerachAndRegister: React.FC = () => {
   return (
     <>
       <Card>
-        <Grid container alignItems="center" justify="space-between">
-          <Box width="80%">
+        <Grid
+          container
+          wrap="nowrap"
+          alignItems="center"
+          justify="space-between"
+        >
+          <Grid item sm={10}>
             <form>
               <Autocomplete
                 fullWidth={true}
@@ -46,8 +51,8 @@ const SerachAndRegister: React.FC = () => {
                 )}
               />
             </form>
-          </Box>
-          <Grid>
+          </Grid>
+          <Grid item>
             <Tooltip arrow title="adicionar paciente">
               <IconButtonBordered>
                 <AddIcon />

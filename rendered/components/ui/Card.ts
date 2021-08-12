@@ -5,4 +5,6 @@ export default styled.div`
   padding: 20px 40px;
   box-shadow: 0 5px 10px #000;
   border-radius: 0.25em;
+  width: 100%;
+  height: 100%;
 `;

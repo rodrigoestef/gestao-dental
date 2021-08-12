@@ -7,7 +7,7 @@ import styled from "styled-components";
 export const IconButtonBordered = withStyles({
   root: {
     backgroundColor: "var(--primary-color)",
-    transition: "0.9s",
+    transition: "0.1s",
     "&:hover": {
       backgroundColor: "var(--hover-primary-color)",
     },
@@ -16,9 +16,12 @@ export const IconButtonBordered = withStyles({
 
 export const SearchIcon = styled(searchSvg)`
   fill: var(--primary-color);
-  /* fill: #f00; */
   height: 30px;
   width: 30px;
+  transition: 0.1s;
+  &:hover {
+    fill: var(--hover-primary-color);
+  }
 `;
 export const AddIcon = styled(addSvg)`
   fill: #fff;
