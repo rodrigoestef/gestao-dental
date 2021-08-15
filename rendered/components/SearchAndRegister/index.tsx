@@ -19,7 +19,7 @@ const SerachAndRegister: React.FC = () => {
           container
           wrap="nowrap"
           alignItems="center"
-          justify="space-between"
+          justifyContent="space-between"
         >
           <Grid item sm={10}>
             <form>
