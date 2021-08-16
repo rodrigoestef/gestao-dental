@@ -33,6 +33,8 @@ module.exports = {
                   alias: {
                     "@components": "./rendered/components",
                     "@assets": "./rendered/assets",
+                    "@actions": "./rendered/actions",
+                    "@reducers": "./rendered/reducers",
                   },
                 },
               ],

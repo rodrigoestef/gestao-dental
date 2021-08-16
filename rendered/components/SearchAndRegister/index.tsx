@@ -8,8 +8,18 @@ import {
   AddIcon,
   IconButtonBordered,
 } from "./styles";
+import { connect } from "react-redux";
+import setOpenFormRegister from "@actions/dispachs/setOpenFormRegister";
 
-const SerachAndRegister: React.FC = () => {
+interface Dispach {
+  openForm: () => void;
+}
+
+const mapDispachToState = (dispach: any): Dispach => ({
+  openForm: () => dispach(setOpenFormRegister(true)),
+});
+
+const SerachAndRegister: React.FC<Dispach> = (props) => {
   const [searchText, setSearchText] = useState<String>("");
   const [loading, setLoading] = useState<boolean>(false);
   return (
@@ -54,7 +64,7 @@ const SerachAndRegister: React.FC = () => {
           </Grid>
           <Grid item>
             <Tooltip arrow title="adicionar paciente">
-              <IconButtonBordered>
+              <IconButtonBordered onClick={props.openForm}>
                 <AddIcon />
               </IconButtonBordered>
             </Tooltip>
@@ -68,4 +78,4 @@ const SerachAndRegister: React.FC = () => {
   );
 };
 
-export default SerachAndRegister;
+export default connect(null, mapDispachToState)(SerachAndRegister);

@@ -13,7 +13,13 @@
       ],
       "@assets/*": [
         "./rendered/assets/*"
-      ]
+      ],
+      "@actions/*": [
+        "./rendered/actions/*"
+      ],
+      "@reducers/*": [
+        "./rendered/reducers/*"
+      ],
     },
     "esModuleInterop": true,
     "skipLibCheck": true,

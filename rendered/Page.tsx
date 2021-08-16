@@ -2,18 +2,37 @@ import React from "react";
 import { Grid, Box } from "@material-ui/core";
 import Card from "@components/ui/Card";
 import SearchAndRegister from "@components/SearchAndRegister";
+import { States } from "@reducers/index";
+import { connect } from "react-redux";
 
-const Page: React.FC = () => {
+interface Props {
+  openFormRegister?: boolean;
+}
+
+const mapStateToProps = (props: { state: States }): Props => ({
+  openFormRegister: props.state.openFormRegister,
+});
+
+const Page: React.FC<Props> = (props) => {
   return (
-    <Grid id="container" wrap="nowrap" container direction="column" spacing={4}>
-      <Grid item>
-        <SearchAndRegister />
+    <>
+      {props.openFormRegister && <div>formulario de registro</div>}
+      <Grid
+        id="container"
+        wrap="nowrap"
+        container
+        direction="column"
+        spacing={4}
+      >
+        <Grid item>
+          <SearchAndRegister />
+        </Grid>
+        <Box height="100%" padding="16px" bgcolor="var(--bg-color)">
+          <Card>grid</Card>
+        </Box>
       </Grid>
-      <Box height="100%" padding="16px" bgcolor="var(--bg-color)">
-        <Card>grid</Card>
-      </Box>
-    </Grid>
+    </>
   );
 };
 
-export default Page;
+export default connect(mapStateToProps, null)(Page);
