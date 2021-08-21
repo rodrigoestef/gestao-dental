@@ -27,4 +27,6 @@ export const RightArrow = styled.div`
 export const GobackButton = styled.div`
   font-size: 1.5em;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `;

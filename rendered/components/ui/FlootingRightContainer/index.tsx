@@ -26,12 +26,12 @@ const FlootingRightContainer: React.FC<Props & DispachProps> = ({
 }) => {
   return (
     <Container open={openFormEffect}>
-      <GobackButton onClick={SendCloseRequest}>
-        <Grid container justifyContent="flex-end" alignItems="center">
+      <Grid container justifyContent="flex-end">
+        <GobackButton onClick={SendCloseRequest}>
           <span>Voltar</span>
           <RightArrow />
-        </Grid>
-      </GobackButton>
+        </GobackButton>
+      </Grid>
       {children}
     </Container>
   );
