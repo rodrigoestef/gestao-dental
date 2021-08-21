@@ -6,7 +6,7 @@ export type ActionType = {
   type: string;
   newValue: any;
 };
-const initialStates: States = {
+export const initialStates: States = {
   openFormRegister: false,
 };
 

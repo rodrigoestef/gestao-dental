@@ -20,6 +20,9 @@
       "@reducers/*": [
         "./rendered/reducers/*"
       ],
+      "@saga/*": [
+        "./rendered/saga/*"
+      ],
     },
     "esModuleInterop": true,
     "skipLibCheck": true,

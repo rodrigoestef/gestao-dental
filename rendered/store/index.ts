@@ -1,4 +1,14 @@
-import { createStore, combineReducers } from "redux";
-import reducers from "../reducers";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import reducers, { initialStates } from "../reducers";
+import createSagaMiddleware from "redux-saga";
+import saga from "@saga/index";
 
-export default createStore(combineReducers({ state: reducers }));
+const sagaMiddleware = createSagaMiddleware();
+
+export default createStore(
+  reducers,
+  initialStates,
+  compose(applyMiddleware(sagaMiddleware))
+);
+
+sagaMiddleware.run(saga);

@@ -27,6 +27,7 @@ module.exports = {
           loader: "babel-loader",
           options: {
             plugins: [
+              ["@babel/plugin-transform-runtime"],
               [
                 "module-resolver",
                 {
@@ -35,6 +36,7 @@ module.exports = {
                     "@assets": "./rendered/assets",
                     "@actions": "./rendered/actions",
                     "@reducers": "./rendered/reducers",
+                    "@saga": "./rendered/saga",
                   },
                 },
               ],

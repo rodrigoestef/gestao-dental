@@ -9,8 +9,8 @@ interface Props {
   openFormRegister?: boolean;
 }
 
-const mapStateToProps = (props: { state: States }): Props => ({
-  openFormRegister: props.state.openFormRegister,
+const mapStateToProps = (props: States): Props => ({
+  openFormRegister: props.openFormRegister,
 });
 
 const Page: React.FC<Props> = (props) => {
