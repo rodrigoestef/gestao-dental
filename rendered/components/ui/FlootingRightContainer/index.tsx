@@ -19,9 +19,10 @@ const mapDispachToProps = (dispach: any): DispachProps => ({
   SendCloseRequest: () => dispach(SendCloseRequest()),
 });
 
-const RegisterForm: React.FC<Props & DispachProps> = ({
+const FlootingRightContainer: React.FC<Props & DispachProps> = ({
   openFormEffect,
   SendCloseRequest,
+  children,
 }) => {
   return (
     <Container open={openFormEffect}>
@@ -31,8 +32,12 @@ const RegisterForm: React.FC<Props & DispachProps> = ({
           <RightArrow />
         </Grid>
       </GobackButton>
+      {children}
     </Container>
   );
 };
 
-export default connect(mapStateToProps, mapDispachToProps)(RegisterForm);
+export default connect(
+  mapStateToProps,
+  mapDispachToProps
+)(FlootingRightContainer);
