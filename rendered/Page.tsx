@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Box } from "@material-ui/core";
 import Card from "@components/ui/Card";
 import SearchAndRegister from "@components/SearchAndRegister";
+import RegisterForm from "@components/RegisterForm";
 import { States } from "@reducers/index";
 import { connect } from "react-redux";
 
@@ -16,7 +17,7 @@ const mapStateToProps = (props: States): Props => ({
 const Page: React.FC<Props> = (props) => {
   return (
     <>
-      {props.openFormRegister && <div>formulario de registro</div>}
+      {props.openFormRegister && <RegisterForm />}
       <Grid
         id="container"
         wrap="nowrap"

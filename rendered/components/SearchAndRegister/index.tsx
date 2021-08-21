@@ -9,14 +9,14 @@ import {
   IconButtonBordered,
 } from "./styles";
 import { connect } from "react-redux";
-import setOpenFormRegister from "@actions/dispachs/setOpenFormRegister";
+import { SendOpenRequest } from "@actions/dispachs/setOpenFormRegister";
 
 interface Dispach {
   openForm: () => void;
 }
 
 const mapDispachToState = (dispach: any): Dispach => ({
-  openForm: () => dispach(setOpenFormRegister(true)),
+  openForm: () => dispach(SendOpenRequest()),
 });
 
 const SerachAndRegister: React.FC<Dispach> = (props) => {
