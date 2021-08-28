@@ -17,6 +17,7 @@ export default createGlobalStyle`
     :root{
         --primary-color:#001e62;
         --hover-primary-color:#5c88da;
+        --error-color:#f44336;
         --bg-color:#f5f5f5;
     }
 
