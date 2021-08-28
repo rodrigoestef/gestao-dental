@@ -15,6 +15,7 @@ export const Container = styled.div<ContainerProps>`
   padding: 20px;
   width: 100%;
   transition: 0.3s linear;
+  overflow: auto;
 `;
 
 export const RightArrow = styled.div`

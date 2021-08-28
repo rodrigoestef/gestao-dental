@@ -5,7 +5,7 @@ import SearchAndRegister from "@components/SearchAndRegister";
 import FlootingRightContainer from "@components/ui/FlootingRightContainer";
 import { States } from "@reducers/index";
 import { connect } from "react-redux";
-
+import RegisterForm from "@components/RegisterForm";
 interface Props {
   openFormRegister?: boolean;
 }
@@ -18,7 +18,9 @@ const Page: React.FC<Props> = (props) => {
   return (
     <>
       {props.openFormRegister && (
-        <FlootingRightContainer>teste</FlootingRightContainer>
+        <FlootingRightContainer>
+          <RegisterForm />
+        </FlootingRightContainer>
       )}
       <Grid
         id="container"
