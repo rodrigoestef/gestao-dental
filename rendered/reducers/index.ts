@@ -1,5 +1,5 @@
 import mapTable from "./mapTable";
-
+import { VariantType } from "notistack";
 export type FormRegisterType = {
   nome: string;
   responsavel: string;
@@ -17,11 +17,17 @@ export type FormRegisterType = {
   celular: string;
 };
 
+export type Notify = {
+  text: string;
+  variant: VariantType;
+};
+
 export type States = {
   openFormRegister: boolean;
   openFormEffect: boolean;
   formRegisterEditMode: boolean;
   formRegister: FormRegisterType;
+  notify?: Notify;
 };
 export type ActionType = {
   type: string;

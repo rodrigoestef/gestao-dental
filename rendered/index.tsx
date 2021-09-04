@@ -6,13 +6,23 @@ import { CssBaseline } from "@material-ui/core";
 import Page from "./Page";
 import { Provider } from "react-redux";
 import store from "./store";
+import { SnackbarProvider } from "notistack";
+// import Slide from "@material-ui/core/Slide";
 
 ReactDOM.render(
   <>
     <CssBaseline />
     <GlobalStyles />
     <Provider store={store}>
-      <Page />
+      <SnackbarProvider
+        dense
+        anchorOrigin={{
+          horizontal: "right",
+          vertical: "bottom",
+        }}
+      >
+        <Page />
+      </SnackbarProvider>
     </Provider>
   </>,
   document.querySelector("#app")
