@@ -17,3 +17,8 @@ export const CloseBasicForm = function* () {
   yield delay(500);
   yield put(SetOpen(false));
 };
+
+export const SubmitFormRegister = function* (a: any) {
+  console.log(a);
+  yield CloseBasicForm();
+};

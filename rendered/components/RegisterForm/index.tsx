@@ -3,26 +3,30 @@ import React from "react";
 import RadioGroup from "@components/ui/RadioGroup";
 import { useFormik } from "formik";
 import { CustonTextField } from "./styles";
+import { connect } from "react-redux";
+import { States, FormRegisterType } from "@reducers/index";
 import * as Yup from "yup";
 import Button from "@components/ui/Button";
-const RegisterForm: React.FC = () => {
+import { SubmitFormRegister } from "@actions/dispachs/FormRegisterEvents";
+
+type StateToProps = {
+  formRegister: FormRegisterType;
+};
+
+type DispatchToProps = {
+  submit: (e: FormRegisterType) => any;
+};
+
+const mapStateToProps = (states: States) => ({
+  formRegister: states.formRegister,
+});
+const dispatchStateTProps = (dispatch: any) => ({
+  submit: (e: FormRegisterType) => dispatch(SubmitFormRegister(e)),
+});
+
+const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
   const formik = useFormik({
-    initialValues: {
-      nome: "",
-      responsavel: "",
-      rg: "",
-      rgorgao: "",
-      cpf: "",
-      nascimento: "",
-      genero: "",
-      profissao: "",
-      cep: "",
-      endereco: "",
-      bairro: "",
-      cidade: "",
-      telefone: "",
-      celular: "",
-    },
+    initialValues: props.formRegister,
     validateOnChange: false,
     validationSchema: Yup.object().shape({
       nome: Yup.string().required("Campo obrigatório"),
@@ -38,9 +42,7 @@ const RegisterForm: React.FC = () => {
       cidade: Yup.string().required("Campo obrigatório"),
       telefone: Yup.string().required("Campo obrigatório"),
     }),
-    onSubmit: (values) => {
-      console.log(values);
-    },
+    onSubmit: props.submit,
   });
   return (
     <Box padding={6}>
@@ -193,7 +195,6 @@ const RegisterForm: React.FC = () => {
             />
           </Grid>
           <Grid item xs={2}>
-            {/* <Box width="100%" margin="24px"> */}
             <Button
               fullWidth
               type="submit"
@@ -203,7 +204,6 @@ const RegisterForm: React.FC = () => {
             >
               Cadastrar
             </Button>
-            {/* </Box> */}
           </Grid>
         </Grid>
       </form>
@@ -211,4 +211,4 @@ const RegisterForm: React.FC = () => {
   );
 };
 
-export default RegisterForm;
+export default connect(mapStateToProps, dispatchStateTProps)(RegisterForm);
