@@ -20,6 +20,7 @@ export type FormRegisterType = {
 export type States = {
   openFormRegister: boolean;
   openFormEffect: boolean;
+  formRegisterEditMode: boolean;
   formRegister: FormRegisterType;
 };
 export type ActionType = {
@@ -29,6 +30,7 @@ export type ActionType = {
 export const initialStates: States = {
   openFormRegister: false,
   openFormEffect: false,
+  formRegisterEditMode: false,
   formRegister: {
     nome: "",
     responsavel: "",

@@ -1,8 +1,9 @@
 import {
   SET_OPEN_FORM_REGISTER,
   SET_OPEN_FORM_REGISTER_EFFECT,
+  CLEAR_REGISTER_FORM,
 } from "@actions/types";
-import { States } from "@reducers/index";
+import { States, initialStates } from "@reducers/index";
 
 const map: { [key: string]: (state: States, newValue: any) => States } = {
   SET_OPEN_FORM_REGISTER: (state: States, newValue: any) => ({
@@ -12,6 +13,11 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
   SET_OPEN_FORM_REGISTER_EFFECT: (state: States, newValue: any) => ({
     ...state,
     openFormEffect: newValue,
+  }),
+  CLEAR_REGISTER_FORM: (state: States, _: any) => ({
+    ...state,
+    formRegisterEditMode: initialStates.formRegisterEditMode,
+    formRegister: { ...initialStates.formRegister },
   }),
   default: (state: States) => state,
 };

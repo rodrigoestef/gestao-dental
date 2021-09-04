@@ -11,6 +11,7 @@ import { SubmitFormRegister } from "@actions/dispachs/FormRegisterEvents";
 
 type StateToProps = {
   formRegister: FormRegisterType;
+  editMode: boolean;
 };
 
 type DispatchToProps = {
@@ -19,6 +20,7 @@ type DispatchToProps = {
 
 const mapStateToProps = (states: States) => ({
   formRegister: states.formRegister,
+  editMode: states.formRegisterEditMode,
 });
 const dispatchStateTProps = (dispatch: any) => ({
   submit: (e: FormRegisterType) => dispatch(SubmitFormRegister(e)),
@@ -202,7 +204,7 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               disableRipple
               color="primary"
             >
-              Cadastrar
+              {props.editMode ? "Editar" : "Cadastrar"}
             </Button>
           </Grid>
         </Grid>
