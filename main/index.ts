@@ -1,7 +1,16 @@
-import { BrowserWindow, app } from "electron";
+import { BrowserWindow, app, ipcMain } from "electron";
 import { resolve } from "path";
 const main = () => {
-  const window = new BrowserWindow({ show: false, width: 1000, height: 600 });
+  const window = new BrowserWindow({
+    show: false,
+    width: 1000,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
+  // window.webContents.openDevTools();
   window.setMenu(null);
   window.loadFile(resolve(__dirname, "../front/index.html"));
   window.setIcon(resolve(__dirname, "icon.png"));
@@ -10,4 +19,8 @@ const main = () => {
 
 app.whenReady().then(() => {
   main();
+});
+
+ipcMain.handle("integration", (_, args) => {
+  console.log(args);
 });

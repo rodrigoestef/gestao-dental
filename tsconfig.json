@@ -23,6 +23,9 @@
       "@saga/*": [
         "./rendered/saga/*"
       ],
+      "@services/*": [
+        "./rendered/services/*"
+      ],
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
