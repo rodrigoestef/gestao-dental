@@ -33,9 +33,9 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
     validateOnChange: false,
     validationSchema: Yup.object().shape({
       nome: Yup.string().required("Campo obrigatório"),
-      rg: Yup.string().required("Campo obrigatório"),
+      rg: Yup.string().required("Campo obrigatório").min(12, "Valor inválido"),
       rgorgao: Yup.string().required("Campo obrigatório"),
-      cpf: Yup.string().required("Campo obrigatório"),
+      cpf: Yup.string().required("Campo obrigatório").min(14, "Valor inválido"),
       nascimento: Yup.string().required("Campo obrigatório"),
       genero: Yup.string().required("Campo obrigatório"),
       profissao: Yup.string().required("Campo obrigatório"),
@@ -43,7 +43,10 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
       endereco: Yup.string().required("Campo obrigatório"),
       bairro: Yup.string().required("Campo obrigatório"),
       cidade: Yup.string().required("Campo obrigatório"),
-      telefone: Yup.string().required("Campo obrigatório"),
+      telefone: Yup.string()
+        .required("Campo obrigatório")
+        .min(13, "Valor inválido"),
+      celular: Yup.string().min(13, "Valor inválido"),
     }),
     onSubmit: props.submit,
   });
