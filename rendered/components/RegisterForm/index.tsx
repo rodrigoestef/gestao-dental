@@ -8,7 +8,7 @@ import { States, FormRegisterType } from "@reducers/index";
 import * as Yup from "yup";
 import Button from "@components/ui/Button";
 import { SubmitFormRegister } from "@actions/dispachs/FormRegisterEvents";
-import { cpfMask, rgMask } from "@factorys/masks";
+import { cpfMask, rgMask, telephoneMask } from "@factorys/masks";
 
 type StateToProps = {
   formRegister: FormRegisterType;
@@ -188,7 +188,10 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               error={!!formik.errors.telefone}
               helperText={formik.errors.telefone}
               value={formik.values.telefone}
-              onChange={formik.handleChange}
+              onChange={(event: React.ChangeEvent<any>) => {
+                event.target.value = telephoneMask(event.target.value);
+                formik.handleChange(event);
+              }}
               name="telefone"
               label="Telefone*"
             />
@@ -198,7 +201,10 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               error={!!formik.errors.celular}
               helperText={formik.errors.celular}
               value={formik.values.celular}
-              onChange={formik.handleChange}
+              onChange={(event: React.ChangeEvent<any>) => {
+                event.target.value = telephoneMask(event.target.value);
+                formik.handleChange(event);
+              }}
               name="celular"
               label="Celular"
             />

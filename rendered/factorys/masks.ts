@@ -19,3 +19,12 @@ export const rgMask = (text: string): string => {
   }
   return newText;
 };
+
+export const telephoneMask = (text: string): string => {
+  let newText = text;
+  newText = newText.replace(/\D/g, "");
+  newText = newText.replace(/(\d{11})(\d)/, "$1");
+  newText = newText.replace(/(^\d{2})(\d)/, "($1)$2");
+  newText = newText.replace(/(\d)(\d{4}$)/, "$1-$2");
+  return newText;
+};
