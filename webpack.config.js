@@ -39,6 +39,7 @@ module.exports = {
                     "@reducers": "./rendered/reducers",
                     "@saga": "./rendered/saga",
                     "@services": "./rendered/services",
+                    "@factorys": "./rendered/factorys",
                   },
                 },
               ],

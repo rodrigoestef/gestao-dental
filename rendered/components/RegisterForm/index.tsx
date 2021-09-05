@@ -8,6 +8,7 @@ import { States, FormRegisterType } from "@reducers/index";
 import * as Yup from "yup";
 import Button from "@components/ui/Button";
 import { SubmitFormRegister } from "@actions/dispachs/FormRegisterEvents";
+import { cpfMask } from "@factorys/masks";
 
 type StateToProps = {
   formRegister: FormRegisterType;
@@ -109,7 +110,10 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               error={!!formik.errors.cpf}
               helperText={formik.errors.cpf}
               value={formik.values.cpf}
-              onChange={formik.handleChange}
+              onChange={(event: React.ChangeEvent<any>) => {
+                event.target.value = cpfMask(event.target.value);
+                formik.handleChange(event);
+              }}
               name="cpf"
               label="CPF*"
             />
