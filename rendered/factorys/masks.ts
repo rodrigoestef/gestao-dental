@@ -28,3 +28,10 @@ export const telephoneMask = (text: string): string => {
   newText = newText.replace(/(\d)(\d{4}$)/, "$1-$2");
   return newText;
 };
+export const cepMask = (text: string): string => {
+  let newText = text;
+  newText = newText.replace(/\D/g, "");
+  newText = newText.replace(/(\d{8})(\d)/, "$1");
+  newText = newText.replace(/(\d)(\d{3})$/, "$1-$2");
+  return newText;
+};

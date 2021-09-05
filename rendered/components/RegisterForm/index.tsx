@@ -8,7 +8,7 @@ import { States, FormRegisterType } from "@reducers/index";
 import * as Yup from "yup";
 import Button from "@components/ui/Button";
 import { SubmitFormRegister } from "@actions/dispachs/FormRegisterEvents";
-import { cpfMask, rgMask, telephoneMask } from "@factorys/masks";
+import { cepMask, cpfMask, rgMask, telephoneMask } from "@factorys/masks";
 
 type StateToProps = {
   formRegister: FormRegisterType;
@@ -151,7 +151,10 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               error={!!formik.errors.cep}
               helperText={formik.errors.cep}
               value={formik.values.cep}
-              onChange={formik.handleChange}
+              onChange={(event: React.ChangeEvent<any>) => {
+                event.target.value = cepMask(event.target.value);
+                formik.handleChange(event);
+              }}
               name="cep"
               label="CEP*"
             />
