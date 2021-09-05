@@ -1,4 +1,5 @@
 node_modules
 yarn-error.log
 build/electron/index.js
+build/electron/**/*
 build/front
