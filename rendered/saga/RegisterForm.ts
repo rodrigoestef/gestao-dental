@@ -53,15 +53,15 @@ export const SubmitFormRegister = function* (a: ActionType) {
 
 export const SearchCep = function* (a: ActionType) {
   try {
+    const { cep, form } = a.newValue;
     yield delay(500);
-    const cep: CepType = yield searchCep(a.newValue);
-    const state: States = yield select();
+    const response: CepType = yield searchCep(cep);
     yield put(
       SetRegisterFormData({
-        ...state.formRegister,
-        endereco: cep.endereco,
-        bairro: cep.bairro,
-        cidade: cep.cidade,
+        ...form,
+        endereco: response.endereco,
+        bairro: response.bairro,
+        cidade: response.cidade,
       })
     );
   } catch (_) {

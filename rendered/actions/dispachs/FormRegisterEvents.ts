@@ -14,9 +14,9 @@ export const ClearRegisterForm = (): ActionType => ({
   type: CLEAR_REGISTER_FORM,
   newValue: true,
 });
-export const SearchCep = (cep: string): ActionType => ({
+export const SearchCep = (cep: string, form: FormRegisterType): ActionType => ({
   type: SEARCH_CEP,
-  newValue: cep,
+  newValue: { cep, form },
 });
 export const SetRegisterFormData = (form: FormRegisterType): ActionType => ({
   type: SET_REGISTER_FORM_DATA,

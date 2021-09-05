@@ -1,5 +1,5 @@
 import { Box, Grid } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import RadioGroup from "@components/ui/RadioGroup";
 import { useFormik } from "formik";
 import { CustonTextField } from "./styles";
@@ -20,7 +20,7 @@ type StateToProps = {
 
 type DispatchToProps = {
   submit: (e: FormRegisterType) => any;
-  searchCep: (cep: string) => any;
+  searchCep: (cep: string, form: FormRegisterType) => any;
 };
 
 const mapStateToProps = (states: States) => ({
@@ -29,7 +29,8 @@ const mapStateToProps = (states: States) => ({
 });
 const dispatchStateTProps = (dispatch: any) => ({
   submit: (e: FormRegisterType) => dispatch(SubmitFormRegister(e)),
-  searchCep: (cep: string) => dispatch(SearchCep(cep)),
+  searchCep: (cep: string, form: FormRegisterType) =>
+    dispatch(SearchCep(cep, form)),
 });
 
 const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
@@ -56,6 +57,11 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
     }),
     onSubmit: props.submit,
   });
+  useEffect(() => {
+    if (formik.values.cep.length === 9) {
+      props.searchCep(formik.values.cep.replace(/\D/g, ""), formik.values);
+    }
+  }, [formik.values.cep]);
   return (
     <Box padding={6}>
       <form onSubmit={formik.handleSubmit}>
@@ -159,9 +165,6 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               value={formik.values.cep}
               onChange={(event: React.ChangeEvent<any>) => {
                 event.target.value = cepMask(event.target.value);
-                if (event.target.value.length === 9) {
-                  props.searchCep(event.target.value.replace(/\D/g, ""));
-                }
                 formik.handleChange(event);
               }}
               name="cep"
