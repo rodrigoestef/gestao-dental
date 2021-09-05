@@ -3,6 +3,7 @@ import {
   SET_OPEN_FORM_REGISTER_EFFECT,
   CLEAR_REGISTER_FORM,
   SET_NOTIFY,
+  SET_REGISTER_FORM_DATA,
 } from "@actions/types";
 import { States, initialStates } from "@reducers/index";
 
@@ -23,6 +24,10 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
   SET_NOTIFY: (state: States, newValue: any) => ({
     ...state,
     notify: { ...newValue },
+  }),
+  SET_REGISTER_FORM_DATA: (state: States, newValue: any) => ({
+    ...state,
+    formRegister: { ...newValue },
   }),
   default: (state: States) => state,
 };

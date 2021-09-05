@@ -7,7 +7,10 @@ import { connect } from "react-redux";
 import { States, FormRegisterType } from "@reducers/index";
 import * as Yup from "yup";
 import Button from "@components/ui/Button";
-import { SubmitFormRegister } from "@actions/dispachs/FormRegisterEvents";
+import {
+  SubmitFormRegister,
+  SearchCep,
+} from "@actions/dispachs/FormRegisterEvents";
 import { cepMask, cpfMask, rgMask, telephoneMask } from "@factorys/masks";
 
 type StateToProps = {
@@ -17,6 +20,7 @@ type StateToProps = {
 
 type DispatchToProps = {
   submit: (e: FormRegisterType) => any;
+  searchCep: (cep: string) => any;
 };
 
 const mapStateToProps = (states: States) => ({
@@ -25,12 +29,14 @@ const mapStateToProps = (states: States) => ({
 });
 const dispatchStateTProps = (dispatch: any) => ({
   submit: (e: FormRegisterType) => dispatch(SubmitFormRegister(e)),
+  searchCep: (cep: string) => dispatch(SearchCep(cep)),
 });
 
 const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
   const formik = useFormik({
     initialValues: props.formRegister,
     validateOnChange: false,
+    enableReinitialize: true,
     validationSchema: Yup.object().shape({
       nome: Yup.string().required("Campo obrigatório"),
       rg: Yup.string().required("Campo obrigatório").min(12, "Valor inválido"),
@@ -153,6 +159,9 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               value={formik.values.cep}
               onChange={(event: React.ChangeEvent<any>) => {
                 event.target.value = cepMask(event.target.value);
+                if (event.target.value.length === 9) {
+                  props.searchCep(event.target.value.replace(/\D/g, ""));
+                }
                 formik.handleChange(event);
               }}
               name="cep"

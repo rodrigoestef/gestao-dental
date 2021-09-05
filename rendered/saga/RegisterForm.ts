@@ -2,14 +2,15 @@ import {
   SetOpen,
   SetOpenFormEffect,
 } from "@actions/dispachs/setOpenFormRegister";
-import { ClearRegisterForm } from "@actions/dispachs/FormRegisterEvents";
+import {
+  ClearRegisterForm,
+  SetRegisterFormData,
+} from "@actions/dispachs/FormRegisterEvents";
 import { SetNotify } from "@actions/dispachs/Notifys";
-import { put, select } from "redux-saga/effects";
+import { put, select, delay } from "redux-saga/effects";
 import { States, ActionType, FormRegisterType } from "@reducers/index";
 import { createClientRequest } from "@services/registerForm";
-
-const delay = (n: number) =>
-  new Promise((resolve) => setTimeout(() => resolve(true), n));
+import { searchCep, CepType } from "@services/searchCep";
 
 export const OpenBasicForm = function* () {
   yield put(SetOpen(true));
@@ -48,4 +49,24 @@ export const SubmitFormRegister = function* (a: ActionType) {
   }
 
   yield CloseBasicForm();
+};
+
+export const SearchCep = function* (a: ActionType) {
+  try {
+    yield delay(500);
+    const cep: CepType = yield searchCep(a.newValue);
+    const state: States = yield select();
+    yield put(
+      SetRegisterFormData({
+        ...state.formRegister,
+        endereco: cep.endereco,
+        bairro: cep.bairro,
+        cidade: cep.cidade,
+      })
+    );
+  } catch (_) {
+    yield put(
+      SetNotify({ text: "Não foi possivel buscar cep", variant: "error" })
+    );
+  }
 };
