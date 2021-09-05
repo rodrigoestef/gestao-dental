@@ -1,5 +1,6 @@
 import { BrowserWindow, app, ipcMain } from "electron";
 import { resolve } from "path";
+import Controllers from "./controllers";
 const main = () => {
   const window = new BrowserWindow({
     show: false,
@@ -21,6 +22,4 @@ app.whenReady().then(() => {
   main();
 });
 
-ipcMain.handle("integration", (_, args) => {
-  console.log(args);
-});
+ipcMain.handle("integration", Controllers);
