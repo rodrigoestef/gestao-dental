@@ -9,5 +9,5 @@ export type CepType = {
 
 export const searchCep = (cep: string): Promise<CepType> =>
   ipcRenderer
-    .invoke("integration", ["cepController@searchCep", cep])
+    .invoke("integration", ["cep@searchCep", cep])
     .then(defaultMiddleWare);

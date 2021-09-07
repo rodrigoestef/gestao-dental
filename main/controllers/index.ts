@@ -1,7 +1,7 @@
 import cepController from "./cepController";
 
 const table: { [key: string]: any } = {
-  cepController: cepController,
+  cep: cepController,
 };
 
 export default (_: any, args: any[]): any => {
