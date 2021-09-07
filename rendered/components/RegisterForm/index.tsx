@@ -139,6 +139,8 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
 
           <Grid item xs={3}>
             <CustonTextField
+              type="date"
+              InputLabelProps={{ shrink: true }}
               error={!!formik.errors.nascimento}
               helperText={formik.errors.nascimento}
               value={formik.values.nascimento}
