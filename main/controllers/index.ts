@@ -1,7 +1,9 @@
 import cepController from "./cepController";
+import clientController from "./clientController";
 
 const table: { [key: string]: any } = {
   cep: cepController,
+  client: clientController,
 };
 
 export default (_: any, args: any[]): any => {

@@ -4,5 +4,5 @@ import defaultMiddleWare from "./defaultMiddleWare";
 
 export const createClientRequest = (e: FormRegisterType) =>
   ipcRenderer
-    .invoke("integration", ["CreateClient", e])
+    .invoke("integration", ["client@create", e])
     .then(defaultMiddleWare);
