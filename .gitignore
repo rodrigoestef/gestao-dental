@@ -3,3 +3,4 @@ yarn-error.log
 build/electron/index.js
 build/electron/**/*
 build/front
+database.sqlite

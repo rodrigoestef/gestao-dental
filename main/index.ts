@@ -1,7 +1,8 @@
 import { BrowserWindow, app, ipcMain } from "electron";
 import { resolve } from "path";
 import Controllers from "./controllers";
-const main = () => {
+import initConection from "./conection";
+const main = async () => {
   const window = new BrowserWindow({
     show: false,
     width: 1000,
@@ -12,6 +13,7 @@ const main = () => {
     },
   });
   // window.webContents.openDevTools();
+  await initConection();
   window.setMenu(null);
   window.loadFile(resolve(__dirname, "../front/index.html"));
   window.setIcon(resolve(__dirname, "icon.png"));

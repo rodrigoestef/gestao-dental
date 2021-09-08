@@ -1,4 +1,5 @@
-type clientType = {
+import ClientRepository from "../repositorys/ClientRepository";
+export type clientType = {
   nome: string;
   responsavel?: string;
   rg: string;
@@ -16,8 +17,9 @@ type clientType = {
 };
 
 class clientController {
-  create(e: clientType) {
-    console.log(e);
+  async create(e: clientType) {
+    const result = await ClientRepository.insert(e);
+    console.log(result);
     return "sucess";
   }
 }
