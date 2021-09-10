@@ -58,7 +58,10 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
     onSubmit: props.submit,
   });
   useEffect(() => {
-    if (formik.values.cep.length === 9) {
+    if (
+      formik.values.cep.length === 9 &&
+      !(formik.values.cep === props.formRegister.cep)
+    ) {
       props.searchCep(formik.values.cep.replace(/\D/g, ""), formik.values);
     }
   }, [formik.values.cep]);
