@@ -9,7 +9,7 @@ import {
 import { SetNotify } from "@actions/dispachs/Notifys";
 import { put, select, delay } from "redux-saga/effects";
 import { States, ActionType, FormRegisterType } from "@reducers/index";
-import { createClientRequest } from "@services/registerForm";
+import { createClientRequest } from "@services/clientServices";
 import { searchCep, CepType } from "@services/searchCep";
 
 export const OpenBasicForm = function* () {

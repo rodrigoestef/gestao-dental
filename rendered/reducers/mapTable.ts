@@ -4,6 +4,8 @@ import {
   CLEAR_REGISTER_FORM,
   SET_NOTIFY,
   SET_REGISTER_FORM_DATA,
+  SET_DATA_GRID,
+  SET_DATA_GRID_LOADING,
 } from "@actions/types";
 import { States, initialStates } from "@reducers/index";
 
@@ -29,6 +31,23 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
     ...state,
     formRegister: { ...newValue },
   }),
+  SET_DATA_GRID: (state: States, newValue: any) => ({
+    ...state,
+    DataGridData: [...newValue],
+  }),
+  SET_DATA_GRID_LOADING: (state: States, newValue: any) => ({
+    ...state,
+    DataGridLoading: newValue,
+  }),
+  SET_DATA_GRID_START: (state: States, newValue: any) => ({
+    ...state,
+    DataGridStart: newValue,
+  }),
+  SET_DATA_GRID_SIZE: (state: States, newValue: any) => ({
+    ...state,
+    DataGridSize: newValue,
+  }),
+
   default: (state: States) => state,
 };
 

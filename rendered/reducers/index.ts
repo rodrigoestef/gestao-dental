@@ -1,6 +1,6 @@
 import mapTable from "./mapTable";
 import { VariantType } from "notistack";
-export type FormRegisterType = {
+export interface FormRegisterType {
   nome: string;
   responsavel: string;
   rg: string;
@@ -15,7 +15,11 @@ export type FormRegisterType = {
   cidade: string;
   telefone: string;
   celular: string;
-};
+}
+
+export interface DataGridDataType extends FormRegisterType {
+  id: number;
+}
 
 export type Notify = {
   text: string;
@@ -28,6 +32,10 @@ export type States = {
   formRegisterEditMode: boolean;
   formRegister: FormRegisterType;
   notify?: Notify;
+  DataGridData: DataGridDataType[];
+  DataGridStart: number;
+  DataGridSize: number;
+  DataGridLoading: boolean;
 };
 export type ActionType = {
   type: string;
@@ -53,6 +61,10 @@ export const initialStates: States = {
     telefone: "",
     celular: "",
   },
+  DataGridData: [],
+  DataGridStart: 0,
+  DataGridSize: 0,
+  DataGridLoading: false,
 };
 
 export default (state = initialStates, action: ActionType) => {

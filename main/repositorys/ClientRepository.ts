@@ -1,5 +1,9 @@
 import Client from "../models/Client";
-import { clientType } from "../controllers/clientController";
+import {
+  clientType,
+  getRequest,
+  clientData,
+} from "../controllers/clientController";
 export default class ClientRepository {
   static async insert(data: clientType) {
     const client = new Client();
@@ -18,5 +22,19 @@ export default class ClientRepository {
     client.telefone = data.telefone;
     client.celular = data.celular || "";
     return await client.save();
+  }
+  static async select(e: getRequest): Promise<clientData[]> {
+    const clients = await Client.find({
+      order: { id: "DESC" },
+      take: e.limit,
+      skip: e.start,
+    });
+    return clients.map((e: Client) => ({
+      ...e,
+      nascimento: e.nascimento.toJSON(),
+    }));
+  }
+  static async count(): Promise<number> {
+    return await Client.count();
   }
 }
