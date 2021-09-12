@@ -6,6 +6,11 @@ import {
   ClearRegisterForm,
   SetRegisterFormData,
 } from "@actions/dispachs/FormRegisterEvents";
+import {
+  SetDataGrid,
+  SetDataGridStart,
+  LoadDataGridRequest,
+} from "@actions/dispachs/DataGridEvents";
 import { SetNotify } from "@actions/dispachs/Notifys";
 import { put, select, delay } from "redux-saga/effects";
 import { States, ActionType, FormRegisterType } from "@reducers/index";
@@ -47,7 +52,9 @@ export const SubmitFormRegister = function* (a: ActionType) {
   } else {
     yield createClient(a.newValue);
   }
-
+  yield put(SetDataGridStart(0));
+  yield put(SetDataGrid([]));
+  yield put(LoadDataGridRequest());
   yield CloseBasicForm();
 };
 
