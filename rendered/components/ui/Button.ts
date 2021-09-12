@@ -18,4 +18,10 @@ export default withStyles({
       borderColor: "var(--hover-primary-color)",
     },
   },
+  textPrimary: {
+    color: "var(--primary-color)",
+    "&:hover": {
+      color: "var(--hover-primary-color)",
+    },
+  },
 })(Button);

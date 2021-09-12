@@ -7,6 +7,7 @@ import { States, Notify } from "@reducers/index";
 import { connect } from "react-redux";
 import RegisterForm from "@components/RegisterForm";
 import { useSnackbar } from "notistack";
+import DataGrid from "@components/DataGrid";
 interface Props {
   openFormRegister?: boolean;
   notify?: Notify;
@@ -41,8 +42,10 @@ const Page: React.FC<Props> = (props) => {
         <Grid item>
           <SearchAndRegister />
         </Grid>
-        <Box height="100%" padding="16px" bgcolor="var(--bg-color)">
-          <Card>grid</Card>
+        <Box flexGrow="1" padding="16px" bgcolor="var(--bg-color)">
+          <Card>
+            <DataGrid />
+          </Card>
         </Box>
       </Grid>
     </>
