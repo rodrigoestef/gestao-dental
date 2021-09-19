@@ -4,8 +4,10 @@ import {
   CLEAR_REGISTER_FORM,
   SEARCH_CEP,
   SET_REGISTER_FORM_DATA,
+  EDIT_CLIENT,
+  SET_FORM_REGISTER_CLIENT_ID,
 } from "@actions/types";
-import { FormRegisterType } from "@reducers/index";
+import { FormRegisterType, DataGridDataType } from "@reducers/index";
 export const SubmitFormRegister = (form: FormRegisterType): ActionType => ({
   type: SUBMIT_FORM_REGISTER,
   newValue: form,
@@ -21,4 +23,12 @@ export const SearchCep = (cep: string, form: FormRegisterType): ActionType => ({
 export const SetRegisterFormData = (form: FormRegisterType): ActionType => ({
   type: SET_REGISTER_FORM_DATA,
   newValue: form,
+});
+export const EditClient = (client: DataGridDataType): ActionType => ({
+  type: EDIT_CLIENT,
+  newValue: client,
+});
+export const setFormRegisterCLientId = (clientId: number): ActionType => ({
+  type: SET_FORM_REGISTER_CLIENT_ID,
+  newValue: clientId,
 });

@@ -4,6 +4,7 @@ import Item from "./Item";
 import { connect } from "react-redux";
 import { States, DataGridDataType } from "@reducers/index";
 import { LoadDataGridRequest } from "@actions/dispachs/DataGridEvents";
+import { EditClient } from "@actions/dispachs/FormRegisterEvents";
 import Skeleton from "./Skeleton";
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 }
 interface Dispatch {
   loadDataGrid: () => void;
+  editClient: (client: DataGridDataType) => void;
 }
 
 const mapStateToProps = (props: States): Props => ({
@@ -20,6 +22,7 @@ const mapStateToProps = (props: States): Props => ({
 });
 const mapDispatchToProps = (dispatch: any): Dispatch => ({
   loadDataGrid: () => dispatch(LoadDataGridRequest()),
+  editClient: (client) => dispatch(EditClient(client)),
 });
 
 const DataGrid: React.FC<Props & Dispatch> = (props) => {
@@ -27,7 +30,13 @@ const DataGrid: React.FC<Props & Dispatch> = (props) => {
 
   const grid = useMemo(
     () =>
-      props.clients.map((client, index) => <Item key={index} {...client} />),
+      props.clients.map((client, index) => (
+        <Item
+          key={index}
+          handleEdit={() => props.editClient(client)}
+          {...client}
+        />
+      )),
     [props.clients]
   );
   return <Container>{props.loading ? <Skeleton /> : grid}</Container>;

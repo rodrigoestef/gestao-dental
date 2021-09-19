@@ -48,6 +48,11 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
     DataGridSize: newValue,
   }),
 
+  SET_FORM_REGISTER_CLIENT_ID: (state: States, newValue: any) => ({
+    ...state,
+    formRegisterClientEditId: newValue,
+  }),
+
   default: (state: States) => state,
 };
 

@@ -4,7 +4,11 @@ import { GridItem, ItemsContainer, Text, EditIcon } from "./styles";
 import Button from "@components/ui/Button";
 import { FormRegisterType } from "@reducers/index";
 
-const Item: React.FC<FormRegisterType> = (props) => {
+interface Types {
+  handleEdit: () => void;
+}
+
+const Item: React.FC<FormRegisterType & Types> = (props) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <GridItem>
@@ -27,7 +31,7 @@ const Item: React.FC<FormRegisterType> = (props) => {
           </Grid>
           <Grid item container justifyContent="flex-end" xs={6}>
             <Grid item>
-              <IconButton>
+              <IconButton onClick={props.handleEdit}>
                 <EditIcon />
               </IconButton>
             </Grid>

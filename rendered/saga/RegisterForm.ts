@@ -1,10 +1,12 @@
 import {
+  SendOpenRequest,
   SetOpen,
   SetOpenFormEffect,
 } from "@actions/dispachs/setOpenFormRegister";
 import {
   ClearRegisterForm,
   SetRegisterFormData,
+  setFormRegisterCLientId,
 } from "@actions/dispachs/FormRegisterEvents";
 import {
   SetDataGrid,
@@ -76,4 +78,11 @@ export const SearchCep = function* (a: ActionType) {
       SetNotify({ text: "Não foi possivel buscar cep", variant: "error" })
     );
   }
+};
+
+export const EditClient = function* (a: ActionType) {
+  const { id } = a.newValue;
+  yield put(setFormRegisterCLientId(id));
+  yield put(SetRegisterFormData(a.newValue));
+  yield put(SendOpenRequest());
 };
