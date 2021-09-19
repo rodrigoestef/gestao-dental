@@ -31,7 +31,7 @@ export default class ClientRepository {
     });
     return clients.map((e: Client) => ({
       ...e,
-      nascimento: e.nascimento.toJSON(),
+      nascimento: e.nascimento.toJSON().split("T")[0],
     }));
   }
   static async count(): Promise<number> {
