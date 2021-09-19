@@ -15,7 +15,7 @@ import { cepMask, cpfMask, rgMask, telephoneMask } from "@factorys/masks";
 
 type StateToProps = {
   formRegister: FormRegisterType;
-  editMode: boolean;
+  editClientId: number;
 };
 
 type DispatchToProps = {
@@ -25,7 +25,7 @@ type DispatchToProps = {
 
 const mapStateToProps = (states: States) => ({
   formRegister: states.formRegister,
-  editMode: states.formRegisterEditMode,
+  editClientId: states.formRegisterClientEditId,
 });
 const dispatchStateTProps = (dispatch: any) => ({
   submit: (e: FormRegisterType) => dispatch(SubmitFormRegister(e)),
@@ -240,7 +240,7 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               disableRipple
               color="primary"
             >
-              {props.editMode ? "Editar" : "Cadastrar"}
+              {props.editClientId > 0 ? "Editar" : "Cadastrar"}
             </Button>
           </Grid>
         </Grid>

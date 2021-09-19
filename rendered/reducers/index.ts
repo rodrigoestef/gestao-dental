@@ -29,7 +29,7 @@ export type Notify = {
 export type States = {
   openFormRegister: boolean;
   openFormEffect: boolean;
-  formRegisterEditMode: boolean;
+  formRegisterClientEditId: number;
   formRegister: FormRegisterType;
   notify?: Notify;
   DataGridData: DataGridDataType[];
@@ -44,7 +44,7 @@ export type ActionType = {
 export const initialStates: States = {
   openFormRegister: false,
   openFormEffect: false,
-  formRegisterEditMode: false,
+  formRegisterClientEditId: 0,
   formRegister: {
     nome: "",
     responsavel: "",

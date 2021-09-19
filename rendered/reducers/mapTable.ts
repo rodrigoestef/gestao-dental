@@ -20,7 +20,7 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
   }),
   CLEAR_REGISTER_FORM: (state: States, _: any) => ({
     ...state,
-    formRegisterEditMode: initialStates.formRegisterEditMode,
+    formRegisterClientEditId: initialStates.formRegisterClientEditId,
     formRegister: { ...initialStates.formRegister },
   }),
   SET_NOTIFY: (state: States, newValue: any) => ({

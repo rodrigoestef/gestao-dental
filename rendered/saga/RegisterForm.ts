@@ -46,8 +46,8 @@ const createClient = function* (form: FormRegisterType) {
 };
 
 export const SubmitFormRegister = function* (a: ActionType) {
-  const { formRegisterEditMode }: States = yield select();
-  if (formRegisterEditMode) {
+  const { formRegisterClientEditId }: States = yield select();
+  if (formRegisterClientEditId) {
     alert("edit");
   } else {
     yield createClient(a.newValue);
