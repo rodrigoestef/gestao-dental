@@ -35,3 +35,8 @@ export const cepMask = (text: string): string => {
   newText = newText.replace(/(\d)(\d{3})$/, "$1-$2");
   return newText;
 };
+
+export const USAtoBRdate = (text: string): string => {
+  const dateSplite = text.split("-");
+  return `${dateSplite[2]}/${dateSplite[1]}/${dateSplite[0]}`;
+};

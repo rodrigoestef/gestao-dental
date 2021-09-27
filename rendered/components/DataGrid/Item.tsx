@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { GridItem, ItemsContainer, Text, EditIcon } from "./styles";
 import Button from "@components/ui/Button";
 import { FormRegisterType } from "@reducers/index";
+import { USAtoBRdate } from "@factorys/masks";
 
 interface Types {
   handleEdit: () => void;
@@ -22,7 +23,8 @@ const Item: React.FC<FormRegisterType & Types> = (props) => {
           <Grid item container xs={6} spacing={4}>
             <Grid item>
               <Text>
-                <strong>Nascimento:</strong> <span>{props.nascimento}</span>
+                <strong>Nascimento:</strong>{" "}
+                <span>{USAtoBRdate(props.nascimento)}</span>
               </Text>
             </Grid>
             <Grid item>
@@ -50,10 +52,21 @@ const Item: React.FC<FormRegisterType & Types> = (props) => {
           </Grid>
           <Grid item container xs={12} spacing={4}>
             <Grid item>
-              <strong>Telefone:</strong> <span>(21)2668-1421</span>
+              <Text>
+                <strong>Endereço:</strong> <span>{props.endereco}</span>
+              </Text>
+            </Grid>
+          </Grid>
+          <Grid item container xs={12} spacing={4}>
+            <Grid item>
+              <Text>
+                <strong>Bairro:</strong> <span>{props.bairro}</span>
+              </Text>
             </Grid>
             <Grid item>
-              <strong>Celular:</strong> <span>(21)2668-1421</span>
+              <Text>
+                <strong>Cidade:</strong> <span>{props.cidade}</span>
+              </Text>
             </Grid>
           </Grid>
         </Grid>
