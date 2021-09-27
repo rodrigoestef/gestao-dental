@@ -5,11 +5,14 @@ import { connect } from "react-redux";
 import { States, DataGridDataType } from "@reducers/index";
 import { LoadDataGridRequest } from "@actions/dispachs/DataGridEvents";
 import { EditClient } from "@actions/dispachs/FormRegisterEvents";
+import Button from "@components/ui/Button";
 import Skeleton from "./Skeleton";
+import { Box, Grid } from "@material-ui/core";
 
 interface Props {
   clients: DataGridDataType[];
   loading: boolean;
+  size: number;
 }
 interface Dispatch {
   loadDataGrid: () => void;
@@ -19,6 +22,7 @@ interface Dispatch {
 const mapStateToProps = (props: States): Props => ({
   clients: props.DataGridData,
   loading: props.DataGridLoading,
+  size: props.DataGridSize,
 });
 const mapDispatchToProps = (dispatch: any): Dispatch => ({
   loadDataGrid: () => dispatch(LoadDataGridRequest()),
@@ -39,7 +43,32 @@ const DataGrid: React.FC<Props & Dispatch> = (props) => {
       )),
     [props.clients]
   );
-  return <Container>{props.loading ? <Skeleton /> : grid}</Container>;
+  return (
+    <Container>
+      {props.loading ? (
+        <Skeleton />
+      ) : (
+        <>
+          {grid}
+          <Box padding="12px">
+            <Grid container justifyContent="center">
+              <Button
+                onClick={props.loadDataGrid}
+                color="primary"
+                variant="contained"
+                disabled={props.clients.length >= props.size}
+              >
+                <Grid container alignItems="center" direction="column">
+                  <Grid item>carregar mais</Grid>
+                  <Grid item>{`${props.clients.length}/${props.size}`}</Grid>
+                </Grid>
+              </Button>
+            </Grid>
+          </Box>
+        </>
+      )}
+    </Container>
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataGrid);
