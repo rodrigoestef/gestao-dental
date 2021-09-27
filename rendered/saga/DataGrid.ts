@@ -11,7 +11,7 @@ import {
 export const LoadDataRequest = function* () {
   const { DataGridStart, DataGridData }: States = yield select();
   yield put(SetDataGridLoading(true));
-  yield delay(3000);
+
   try {
     const response: GetDataGridResponse = yield getDataGrid({
       limit: 50,
