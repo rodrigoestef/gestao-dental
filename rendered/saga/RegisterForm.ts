@@ -15,8 +15,16 @@ import {
 } from "@actions/dispachs/DataGridEvents";
 import { SetNotify } from "@actions/dispachs/Notifys";
 import { put, select, delay } from "redux-saga/effects";
-import { States, ActionType, FormRegisterType } from "@reducers/index";
-import { createClientRequest } from "@services/clientServices";
+import {
+  States,
+  ActionType,
+  FormRegisterType,
+  DataGridDataType,
+} from "@reducers/index";
+import {
+  createClientRequest,
+  editClientRequest,
+} from "@services/clientServices";
 import { searchCep, CepType } from "@services/searchCep";
 
 export const OpenBasicForm = function* () {
@@ -46,11 +54,26 @@ const createClient = function* (form: FormRegisterType) {
     );
   }
 };
+const editClient = function* (form: DataGridDataType) {
+  try {
+    yield editClientRequest(form);
+    yield put(
+      SetNotify({ text: "Edição realizada com sucesso", variant: "success" })
+    );
+  } catch (_) {
+    yield put(
+      SetNotify({
+        text: "Não foi possivel editar cadastro",
+        variant: "error",
+      })
+    );
+  }
+};
 
 export const SubmitFormRegister = function* (a: ActionType) {
   const { formRegisterClientEditId }: States = yield select();
   if (formRegisterClientEditId) {
-    alert("edit");
+    yield editClient({ id: formRegisterClientEditId, ...a.newValue });
   } else {
     yield createClient(a.newValue);
   }

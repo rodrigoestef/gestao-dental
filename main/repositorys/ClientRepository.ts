@@ -23,6 +23,26 @@ export default class ClientRepository {
     client.celular = data.celular || "";
     return await client.save();
   }
+  static async edit(data: clientData) {
+    const client = await Client.findOne({ id: data.id });
+    if (client) {
+      client.nome = data.nome;
+      client.responsavel = data.responsavel || "";
+      client.rg = data.rg;
+      client.rgorgao = data.rgorgao;
+      client.cpf = data.cpf;
+      client.nascimento = new Date(data.nascimento);
+      client.genero = data.genero;
+      client.profissao = data.profissao;
+      client.cep = data.cep;
+      client.endereco = data.endereco;
+      client.bairro = data.bairro;
+      client.cidade = data.cidade;
+      client.telefone = data.telefone;
+      client.celular = data.celular || "";
+      client.save();
+    }
+  }
   static async select(e: getRequest): Promise<clientData[]> {
     const clients = await Client.find({
       order: { id: "DESC" },

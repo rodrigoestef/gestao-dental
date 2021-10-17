@@ -38,6 +38,10 @@ class clientController {
     console.log(result);
     return "sucess";
   }
+  async edit(e: clientData) {
+    ClientRepository.edit(e);
+    return "sucess";
+  }
   async get(e: getRequest): Promise<getResponse> {
     const data = await ClientRepository.select(e);
     const size = await ClientRepository.count();
