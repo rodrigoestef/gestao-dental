@@ -5,6 +5,9 @@ import {
   SET_DATA_GRID_LOADING,
   SET_DATA_GRID_START,
   SET_DATA_GRID_SIZE,
+  SET_SEARCH_CLIENT_NAME_DATA_GRID,
+  SUBMIT_SEARCH_CLIENT_FORM,
+  SET_SEARCH_CLIENT_AUTOCOMPLETE,
 } from "@actions/types";
 
 export const LoadDataGridRequest = (): ActionType => ({
@@ -26,4 +29,16 @@ export const SetDataGridStart = (value: number): ActionType => ({
 export const SetDataGridSize = (value: number): ActionType => ({
   type: SET_DATA_GRID_SIZE,
   newValue: value,
+});
+export const SetSearchName = (value: string): ActionType => ({
+  type: SET_SEARCH_CLIENT_NAME_DATA_GRID,
+  newValue: value,
+});
+export const SubmitSearchClientForm = (): ActionType => ({
+  type: SUBMIT_SEARCH_CLIENT_FORM,
+  newValue: true,
+});
+export const SetSearchClientAutoComplete = (options: string[]): ActionType => ({
+  type: SET_SEARCH_CLIENT_AUTOCOMPLETE,
+  newValue: options,
 });

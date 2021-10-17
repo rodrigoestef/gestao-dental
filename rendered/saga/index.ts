@@ -5,6 +5,8 @@ import {
   SEARCH_CEP,
   LOAD_DATA_GRID_REQUEST,
   EDIT_CLIENT,
+  SUBMIT_SEARCH_CLIENT_FORM,
+  SET_SEARCH_CLIENT_NAME_DATA_GRID,
 } from "@actions/types";
 import {
   OpenBasicForm,
@@ -13,7 +15,7 @@ import {
   SearchCep,
   EditClient,
 } from "./RegisterForm";
-import { LoadDataRequest } from "./DataGrid";
+import { LoadDataRequest, SearchClient, DebounceClientName } from "./DataGrid";
 import { all, takeLatest } from "redux-saga/effects";
 
 function* EventTable() {
@@ -24,6 +26,8 @@ function* EventTable() {
     takeLatest(SEARCH_CEP, SearchCep),
     takeLatest(LOAD_DATA_GRID_REQUEST, LoadDataRequest),
     takeLatest(EDIT_CLIENT, EditClient),
+    takeLatest(SUBMIT_SEARCH_CLIENT_FORM, SearchClient),
+    takeLatest(SET_SEARCH_CLIENT_NAME_DATA_GRID, DebounceClientName),
   ]);
 }
 

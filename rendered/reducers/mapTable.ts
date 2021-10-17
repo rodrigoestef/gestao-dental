@@ -52,6 +52,14 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
     ...state,
     formRegisterClientEditId: newValue,
   }),
+  SET_SEARCH_CLIENT_NAME_DATA_GRID: (state: States, newValue: any) => ({
+    ...state,
+    searchClientName: newValue,
+  }),
+  SET_SEARCH_CLIENT_AUTOCOMPLETE: (state: States, newValue: any) => ({
+    ...state,
+    searchClientAutoComplete: newValue,
+  }),
 
   default: (state: States) => state,
 };

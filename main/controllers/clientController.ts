@@ -44,13 +44,17 @@ class clientController {
   }
   async get(e: getRequest): Promise<getResponse> {
     const data = await ClientRepository.select(e);
-    const size = await ClientRepository.count();
+    const size = await ClientRepository.count(e);
     return {
       limit: e.limit,
       start: e.start,
       data: data,
       size,
     };
+  }
+
+  async searchName(search: string) {
+    return await ClientRepository.searchName(search);
   }
 }
 

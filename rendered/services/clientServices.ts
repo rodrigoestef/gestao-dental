@@ -23,3 +23,8 @@ export const getDataGrid = (e: GetDataGridType): Promise<GetDataGridResponse> =>
 
 export const editClientRequest = (e: DataGridDataType): Promise<any> =>
   ipcRenderer.invoke("integration", ["client@edit", e]).then(defaultMiddleWare);
+
+export const searchClientName = (e: string): Promise<string[]> =>
+  ipcRenderer
+    .invoke("integration", ["client@searchName", e])
+    .then(defaultMiddleWare);

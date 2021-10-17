@@ -36,6 +36,8 @@ export type States = {
   DataGridStart: number;
   DataGridSize: number;
   DataGridLoading: boolean;
+  searchClientName: string;
+  searchClientAutoComplete: string[];
 };
 export type ActionType = {
   type: string;
@@ -65,6 +67,8 @@ export const initialStates: States = {
   DataGridStart: 0,
   DataGridSize: 0,
   DataGridLoading: false,
+  searchClientName: "",
+  searchClientAutoComplete: [],
 };
 
 export default (state = initialStates, action: ActionType) => {

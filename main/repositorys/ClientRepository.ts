@@ -48,13 +48,23 @@ export default class ClientRepository {
       order: { id: "DESC" },
       take: e.limit,
       skip: e.start,
+      where: `nome like '%${e?.search}%'`,
     });
     return clients.map((e: Client) => ({
       ...e,
       nascimento: e.nascimento.toJSON().split("T")[0],
     }));
   }
-  static async count(): Promise<number> {
-    return await Client.count();
+  static async count(e: getRequest): Promise<number> {
+    return await Client.count({
+      where: `nome like '%${e?.search}%'`,
+    });
+  }
+  static async searchName(search: string): Promise<string[]> {
+    const result = await Client.find({
+      where: `nome like '%${search}%'`,
+      select: ["nome"],
+    });
+    return result.map((e) => e.nome);
   }
 }
