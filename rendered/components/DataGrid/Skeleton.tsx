@@ -4,8 +4,8 @@ import React from "react";
 
 const skeleton: React.FC = () => (
   <>
-    {Array.from({ length: 3 }, () => (
-      <GridItem>
+    {Array.from({ length: 3 }, (_: any, i: number) => (
+      <GridItem key={i}>
         <Grid container justifyContent="space-between">
           <Grid item xs={12}>
             <CustonSkeleton />
