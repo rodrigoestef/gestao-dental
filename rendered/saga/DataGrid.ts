@@ -51,6 +51,7 @@ export const LoadDataRequest = function* () {
 
 export const SearchClient = function* () {
   yield put(SetDataGridStart(0));
+  yield put(SetDataGridSize(0));
   yield put(SetDataGrid([]));
   yield put(LoadDataGridRequest());
 };
