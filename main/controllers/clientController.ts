@@ -42,6 +42,10 @@ class clientController {
     ClientRepository.edit(e);
     return "sucess";
   }
+  async delete(id: number) {
+    ClientRepository.delete(id);
+    return "sucess";
+  }
   async get(e: getRequest): Promise<getResponse> {
     const data = await ClientRepository.select(e);
     const size = await ClientRepository.count(e);

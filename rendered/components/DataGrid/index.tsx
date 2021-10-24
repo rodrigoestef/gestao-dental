@@ -4,7 +4,7 @@ import Item from "./Item";
 import { connect } from "react-redux";
 import { States, DataGridDataType } from "@reducers/index";
 import { LoadDataGridRequest } from "@actions/dispachs/DataGridEvents";
-import { EditClient } from "@actions/dispachs/FormRegisterEvents";
+import { EditClient, DeleteClient } from "@actions/dispachs/FormRegisterEvents";
 import Button from "@components/ui/Button";
 import Skeleton from "./Skeleton";
 import { Box, Grid } from "@material-ui/core";
@@ -17,6 +17,7 @@ interface Props {
 interface Dispatch {
   loadDataGrid: () => void;
   editClient: (client: DataGridDataType) => void;
+  deleteClient: (id: number) => void;
 }
 
 const mapStateToProps = (props: States): Props => ({
@@ -27,6 +28,7 @@ const mapStateToProps = (props: States): Props => ({
 const mapDispatchToProps = (dispatch: any): Dispatch => ({
   loadDataGrid: () => dispatch(LoadDataGridRequest()),
   editClient: (client) => dispatch(EditClient(client)),
+  deleteClient: (id) => dispatch(DeleteClient(id)),
 });
 
 const DataGrid: React.FC<Props & Dispatch> = (props) => {
@@ -37,6 +39,7 @@ const DataGrid: React.FC<Props & Dispatch> = (props) => {
       props.clients.map((client, index) => (
         <Item
           key={index}
+          handleDelete={() => props.deleteClient(client.id)}
           handleEdit={() => props.editClient(client)}
           {...client}
         />
