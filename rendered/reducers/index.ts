@@ -29,6 +29,8 @@ export type Notify = {
 export type States = {
   openFormRegister: boolean;
   openFormEffect: boolean;
+  openFormMedicalHistory: boolean;
+  openFormMedicalHistoryEffect: boolean;
   formRegisterClientEditId: number;
   formRegister: FormRegisterType;
   notify?: Notify;
@@ -46,6 +48,8 @@ export type ActionType = {
 export const initialStates: States = {
   openFormRegister: false,
   openFormEffect: false,
+  openFormMedicalHistory: false,
+  openFormMedicalHistoryEffect: false,
   formRegisterClientEditId: 0,
   formRegister: {
     nome: "",

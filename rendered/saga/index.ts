@@ -7,6 +7,8 @@ import {
   EDIT_CLIENT,
   SUBMIT_SEARCH_CLIENT_FORM,
   SET_SEARCH_CLIENT_NAME_DATA_GRID,
+  SET_OPEN_FORM_MEDICAL_HISTORY_REQUEST,
+  SET_CLOSE_FORM_MEDICAL_HISTORY_REQUEST,
 } from "@actions/types";
 import {
   OpenBasicForm,
@@ -16,6 +18,10 @@ import {
   EditClient,
 } from "./RegisterForm";
 import { LoadDataRequest, SearchClient, DebounceClientName } from "./DataGrid";
+import {
+  CloseFormHistoryMedical,
+  OpenFormHistoryMedical,
+} from "./MedicalHistoryForm";
 import { all, takeLatest } from "redux-saga/effects";
 
 function* EventTable() {
@@ -28,6 +34,8 @@ function* EventTable() {
     takeLatest(EDIT_CLIENT, EditClient),
     takeLatest(SUBMIT_SEARCH_CLIENT_FORM, SearchClient),
     takeLatest(SET_SEARCH_CLIENT_NAME_DATA_GRID, DebounceClientName),
+    takeLatest(SET_OPEN_FORM_MEDICAL_HISTORY_REQUEST, OpenFormHistoryMedical),
+    takeLatest(SET_CLOSE_FORM_MEDICAL_HISTORY_REQUEST, CloseFormHistoryMedical),
   ]);
 }
 

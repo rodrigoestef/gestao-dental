@@ -7,6 +7,7 @@ import { USAtoBRdate } from "@factorys/masks";
 
 interface Types {
   handleEdit: () => void;
+  openFormMedicalHistory: () => void;
 }
 
 const Item: React.FC<FormRegisterType & Types> = (props) => {
@@ -50,11 +51,22 @@ const Item: React.FC<FormRegisterType & Types> = (props) => {
               </Text>
             </Grid>
           </Grid>
-          <Grid item container xs={12} spacing={4}>
+          <Grid item container xs={6} spacing={4}>
             <Grid item>
               <Text>
                 <strong>Endereço:</strong> <span>{props.endereco}</span>
               </Text>
+            </Grid>
+          </Grid>
+          <Grid item container xs={6} justifyContent="flex-end" spacing={4}>
+            <Grid item>
+              <Button
+                variant="text"
+                onClick={props.openFormMedicalHistory}
+                color="primary"
+              >
+                histórico médico
+              </Button>
             </Grid>
           </Grid>
           <Grid item container xs={12} spacing={4}>

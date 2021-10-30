@@ -8,6 +8,7 @@ import { EditClient } from "@actions/dispachs/FormRegisterEvents";
 import Button from "@components/ui/Button";
 import Skeleton from "./Skeleton";
 import { Box, Grid } from "@material-ui/core";
+import { SendOpenFormMedicalHistoryRequest } from "@actions/dispachs/setOpenFormHistoryMedical";
 
 interface Props {
   clients: DataGridDataType[];
@@ -17,6 +18,7 @@ interface Props {
 interface Dispatch {
   loadDataGrid: () => void;
   editClient: (client: DataGridDataType) => void;
+  openFormMedicalHistory: () => void;
 }
 
 const mapStateToProps = (props: States): Props => ({
@@ -27,6 +29,7 @@ const mapStateToProps = (props: States): Props => ({
 const mapDispatchToProps = (dispatch: any): Dispatch => ({
   loadDataGrid: () => dispatch(LoadDataGridRequest()),
   editClient: (client) => dispatch(EditClient(client)),
+  openFormMedicalHistory: () => dispatch(SendOpenFormMedicalHistoryRequest()),
 });
 
 const DataGrid: React.FC<Props & Dispatch> = (props) => {
@@ -38,6 +41,7 @@ const DataGrid: React.FC<Props & Dispatch> = (props) => {
         <Item
           key={index}
           handleEdit={() => props.editClient(client)}
+          openFormMedicalHistory={props.openFormMedicalHistory}
           {...client}
         />
       )),

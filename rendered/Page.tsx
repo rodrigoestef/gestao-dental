@@ -3,6 +3,7 @@ import { Grid, Box } from "@material-ui/core";
 import Card from "@components/ui/Card";
 import SearchAndRegister from "@components/SearchAndRegister";
 import FlootingRightContainer from "@components/ui/FlootingRightContainer";
+import FlootingLeftContainer from "@components/ui/FlootingLeftContainer";
 import { States, Notify } from "@reducers/index";
 import { connect } from "react-redux";
 import RegisterForm from "@components/RegisterForm";
@@ -10,11 +11,13 @@ import { useSnackbar } from "notistack";
 import DataGrid from "@components/DataGrid";
 interface Props {
   openFormRegister?: boolean;
+  openFormMedicalHistory?: boolean;
   notify?: Notify;
 }
 
 const mapStateToProps = (props: States): Props => ({
   openFormRegister: props.openFormRegister,
+  openFormMedicalHistory: props.openFormMedicalHistory,
   notify: props.notify,
 });
 
@@ -31,6 +34,13 @@ const Page: React.FC<Props> = (props) => {
         <FlootingRightContainer>
           <RegisterForm />
         </FlootingRightContainer>
+      )}
+      {props.openFormMedicalHistory && (
+        <>
+          <FlootingLeftContainer>
+            <h1>Histórico médico</h1>
+          </FlootingLeftContainer>
+        </>
       )}
       <Grid
         id="container"

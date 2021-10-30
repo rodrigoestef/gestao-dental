@@ -60,6 +60,14 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
     ...state,
     searchClientAutoComplete: newValue,
   }),
+  SET_OPEN_FORM_MEDICAL_HISTORY: (state: States, newValue: any) => ({
+    ...state,
+    openFormMedicalHistory: newValue,
+  }),
+  SET_OPEN_FORM_MEDICAL_HISTORY_EFFECT: (state: States, newValue: any) => ({
+    ...state,
+    openFormMedicalHistoryEffect: newValue,
+  }),
 
   default: (state: States) => state,
 };
