@@ -6,6 +6,7 @@ import {
   SET_REGISTER_FORM_DATA,
   EDIT_CLIENT,
   SET_FORM_REGISTER_CLIENT_ID,
+  DELETE_CLIENT,
 } from "@actions/types";
 import { FormRegisterType, DataGridDataType } from "@reducers/index";
 export const SubmitFormRegister = (form: FormRegisterType): ActionType => ({
@@ -27,6 +28,10 @@ export const SetRegisterFormData = (form: FormRegisterType): ActionType => ({
 export const EditClient = (client: DataGridDataType): ActionType => ({
   type: EDIT_CLIENT,
   newValue: client,
+});
+export const DeleteClient = (id: number): ActionType => ({
+  type: DELETE_CLIENT,
+  newValue: id,
 });
 export const setFormRegisterCLientId = (clientId: number): ActionType => ({
   type: SET_FORM_REGISTER_CLIENT_ID,

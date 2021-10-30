@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as editSvg } from "@assets/icons/edit.svg";
+import { ReactComponent as deleteSvg } from "@assets/icons/delete.svg";
 import { Skeleton } from "@material-ui/lab";
 
 export const CustonSkeleton = styled(Skeleton).attrs({ variant: "text" })`
@@ -35,10 +36,21 @@ export const Text = styled.div`
 
 export const EditIcon = styled(editSvg)`
   fill: var(--primary-color);
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
   transition: 0.1s;
   &:hover {
     fill: var(--hover-primary-color);
+  }
+`;
+export const DeleteIcon = styled(deleteSvg)`
+  fill: #f00;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  transition: 0.1s;
+  &:hover {
+    fill: var(--hover-red-color);
   }
 `;

@@ -43,6 +43,14 @@ export default class ClientRepository {
       client.save();
     }
   }
+
+  static async delete(id: number) {
+    const client = await Client.findOne({ id });
+    if (client) {
+      client.remove();
+    }
+  }
+
   static async select(e: getRequest): Promise<clientData[]> {
     const clients = await Client.find({
       order: { id: "DESC" },

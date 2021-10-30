@@ -4,6 +4,7 @@ import {
   getDataGrid,
   GetDataGridResponse,
   searchClientName,
+  deleteClientRequest,
 } from "@services/clientServices";
 import { SetNotify } from "@actions/dispachs/Notifys";
 import {
@@ -69,6 +70,23 @@ export const DebounceClientName = function* ({ newValue }: ActionType) {
         text: "Ocorreu um erro ao buscar clientes",
         variant: "error",
       })
+    );
+  }
+};
+
+export const DeleteClient = function* ({ newValue }: ActionType) {
+  try {
+    yield deleteClientRequest(newValue);
+    yield put(SetDataGridStart(0));
+    yield put(SetDataGridSize(0));
+    yield put(SetDataGrid([]));
+    yield put(LoadDataGridRequest());
+    yield put(
+      SetNotify({ text: "Cliente deletado com sucesso", variant: "info" })
+    );
+  } catch (_) {
+    yield put(
+      SetNotify({ text: "Não foi possivel deletar cliente", variant: "error" })
     );
   }
 };

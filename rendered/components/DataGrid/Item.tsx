@@ -1,6 +1,6 @@
 import { Grid, IconButton } from "@material-ui/core";
 import React, { useState } from "react";
-import { GridItem, ItemsContainer, Text, EditIcon } from "./styles";
+import { GridItem, ItemsContainer, Text, EditIcon, DeleteIcon } from "./styles";
 import Button from "@components/ui/Button";
 import { FormRegisterType } from "@reducers/index";
 import { USAtoBRdate } from "@factorys/masks";
@@ -8,6 +8,7 @@ import { USAtoBRdate } from "@factorys/masks";
 interface Types {
   handleEdit: () => void;
   openFormMedicalHistory: () => void;
+  handleDelete: () => void;
 }
 
 const Item: React.FC<FormRegisterType & Types> = (props) => {
@@ -36,6 +37,15 @@ const Item: React.FC<FormRegisterType & Types> = (props) => {
             <Grid item>
               <IconButton onClick={props.handleEdit}>
                 <EditIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  if (confirm("Deseja realmente deletar cliente")) {
+                    props.handleDelete();
+                  }
+                }}
+              >
+                <DeleteIcon />
               </IconButton>
             </Grid>
           </Grid>

@@ -18,6 +18,7 @@ export default createGlobalStyle`
         --primary-color:#001e62;
         --hover-primary-color:#5c88da;
         --error-color:#f44336;
+        --hover-red-color:var(--error-color);
         --bg-color:#f5f5f5;
     }
 
