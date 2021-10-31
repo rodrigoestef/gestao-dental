@@ -38,13 +38,7 @@ const Item: React.FC<FormRegisterType & Types> = (props) => {
               <IconButton onClick={props.handleEdit}>
                 <EditIcon />
               </IconButton>
-              <IconButton
-                onClick={() => {
-                  if (confirm("Deseja realmente deletar cliente")) {
-                    props.handleDelete();
-                  }
-                }}
-              >
+              <IconButton onClick={props.handleDelete}>
                 <DeleteIcon />
               </IconButton>
             </Grid>

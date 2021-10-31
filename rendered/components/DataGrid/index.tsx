@@ -2,13 +2,14 @@ import React, { useEffect, useMemo } from "react";
 import { Container } from "./styles";
 import Item from "./Item";
 import { connect } from "react-redux";
-import { States, DataGridDataType } from "@reducers/index";
+import { States, DataGridDataType, ConfirmModal } from "@reducers/index";
 import { LoadDataGridRequest } from "@actions/dispachs/DataGridEvents";
 import { EditClient, DeleteClient } from "@actions/dispachs/FormRegisterEvents";
 import Button from "@components/ui/Button";
 import Skeleton from "./Skeleton";
 import { Box, Grid } from "@material-ui/core";
 import { SendOpenFormMedicalHistoryRequest } from "@actions/dispachs/setOpenFormHistoryMedical";
+import { SetConfirmModal } from "@actions/dispachs/ConfirmModal";
 
 interface Props {
   clients: DataGridDataType[];
@@ -20,6 +21,7 @@ interface Dispatch {
   editClient: (client: DataGridDataType) => void;
   openFormMedicalHistory: () => void;
   deleteClient: (id: number) => void;
+  setConfirmModal: (value: ConfirmModal) => void;
 }
 
 const mapStateToProps = (props: States): Props => ({
@@ -32,6 +34,7 @@ const mapDispatchToProps = (dispatch: any): Dispatch => ({
   editClient: (client) => dispatch(EditClient(client)),
   openFormMedicalHistory: () => dispatch(SendOpenFormMedicalHistoryRequest()),
   deleteClient: (id) => dispatch(DeleteClient(id)),
+  setConfirmModal: (value) => dispatch(SetConfirmModal(value)),
 });
 
 const DataGrid: React.FC<Props & Dispatch> = (props) => {
@@ -42,7 +45,14 @@ const DataGrid: React.FC<Props & Dispatch> = (props) => {
       props.clients.map((client, index) => (
         <Item
           key={index}
-          handleDelete={() => props.deleteClient(client.id)}
+          handleDelete={() =>
+            props.setConfirmModal({
+              text: "Deseja realmente deletar cliente ?",
+              yesButtonText: "confirmar",
+              noButtonText: "cancelar",
+              callback: () => props.deleteClient(client.id),
+            })
+          }
           handleEdit={() => props.editClient(client)}
           openFormMedicalHistory={props.openFormMedicalHistory}
           {...client}

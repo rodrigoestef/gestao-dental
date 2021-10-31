@@ -26,6 +26,13 @@ export type Notify = {
   variant: VariantType;
 };
 
+export type ConfirmModal = {
+  text: String;
+  callback: () => void;
+  yesButtonText?: String;
+  noButtonText?: String;
+};
+
 export type States = {
   openFormRegister: boolean;
   openFormEffect: boolean;
@@ -40,6 +47,7 @@ export type States = {
   DataGridLoading: boolean;
   searchClientName: string;
   searchClientAutoComplete: string[];
+  confirmModal: ConfirmModal | null;
 };
 export type ActionType = {
   type: string;
@@ -73,6 +81,7 @@ export const initialStates: States = {
   DataGridLoading: false,
   searchClientName: "",
   searchClientAutoComplete: [],
+  confirmModal: null,
 };
 
 export default (state = initialStates, action: ActionType) => {

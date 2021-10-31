@@ -68,6 +68,10 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
     ...state,
     openFormMedicalHistoryEffect: newValue,
   }),
+  SET_CONFIRM_MODAL: (state: States, newValue: any) => ({
+    ...state,
+    confirmModal: newValue,
+  }),
 
   default: (state: States) => state,
 };

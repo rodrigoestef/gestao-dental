@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import RegisterForm from "@components/RegisterForm";
 import { useSnackbar } from "notistack";
 import DataGrid from "@components/DataGrid";
+import ConfirmModal from "@components/ConfirmModal";
 interface Props {
   openFormRegister?: boolean;
   openFormMedicalHistory?: boolean;
@@ -58,6 +59,7 @@ const Page: React.FC<Props> = (props) => {
           </Card>
         </Box>
       </Grid>
+      <ConfirmModal />
     </>
   );
 };
