@@ -9,9 +9,9 @@ export const SetOpenMedicalHistory = (value: boolean): ActionType => ({
   type: SET_OPEN_FORM_MEDICAL_HISTORY,
   newValue: value,
 });
-export const SendOpenFormMedicalHistoryRequest = (): ActionType => ({
+export const SendOpenFormMedicalHistoryRequest = (id: number): ActionType => ({
   type: SET_OPEN_FORM_MEDICAL_HISTORY_REQUEST,
-  newValue: true,
+  newValue: id,
 });
 export const SendCloseFormMedicalHistoryRequest = (): ActionType => ({
   type: SET_CLOSE_FORM_MEDICAL_HISTORY_REQUEST,

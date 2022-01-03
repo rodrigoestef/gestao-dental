@@ -1,9 +1,11 @@
 import cepController from "./cepController";
 import clientController from "./clientController";
+import medicalHistoryController from "./medicalHistoryController";
 
 const table: { [key: string]: any } = {
   cep: cepController,
   client: clientController,
+  medicalHistory: medicalHistoryController,
 };
 
 export default (_: any, args: any[]): any => {

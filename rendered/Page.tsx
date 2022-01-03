@@ -10,6 +10,7 @@ import RegisterForm from "@components/RegisterForm";
 import { useSnackbar } from "notistack";
 import DataGrid from "@components/DataGrid";
 import ConfirmModal from "@components/ConfirmModal";
+import FormMedicalHistory from "@components/FormMedicalHistory";
 interface Props {
   openFormRegister?: boolean;
   openFormMedicalHistory?: boolean;
@@ -37,11 +38,9 @@ const Page: React.FC<Props> = (props) => {
         </FlootingRightContainer>
       )}
       {props.openFormMedicalHistory && (
-        <>
-          <FlootingLeftContainer>
-            <h1>Histórico médico</h1>
-          </FlootingLeftContainer>
-        </>
+        <FlootingLeftContainer>
+          <FormMedicalHistory />
+        </FlootingLeftContainer>
       )}
       <Grid
         id="container"

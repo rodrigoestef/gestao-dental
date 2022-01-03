@@ -19,7 +19,7 @@ interface Props {
 interface Dispatch {
   loadDataGrid: () => void;
   editClient: (client: DataGridDataType) => void;
-  openFormMedicalHistory: () => void;
+  openFormMedicalHistory: (id: number) => void;
   deleteClient: (id: number) => void;
   setConfirmModal: (value: ConfirmModal) => void;
 }
@@ -32,7 +32,8 @@ const mapStateToProps = (props: States): Props => ({
 const mapDispatchToProps = (dispatch: any): Dispatch => ({
   loadDataGrid: () => dispatch(LoadDataGridRequest()),
   editClient: (client) => dispatch(EditClient(client)),
-  openFormMedicalHistory: () => dispatch(SendOpenFormMedicalHistoryRequest()),
+  openFormMedicalHistory: (id: number) =>
+    dispatch(SendOpenFormMedicalHistoryRequest(id)),
   deleteClient: (id) => dispatch(DeleteClient(id)),
   setConfirmModal: (value) => dispatch(SetConfirmModal(value)),
 });
@@ -54,7 +55,7 @@ const DataGrid: React.FC<Props & Dispatch> = (props) => {
             })
           }
           handleEdit={() => props.editClient(client)}
-          openFormMedicalHistory={props.openFormMedicalHistory}
+          openFormMedicalHistory={() => props.openFormMedicalHistory(client.id)}
           {...client}
         />
       )),

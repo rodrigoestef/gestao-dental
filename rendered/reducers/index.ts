@@ -33,6 +33,11 @@ export type ConfirmModal = {
   noButtonText?: String;
 };
 
+export type formMedicalHistoryType = {
+  id: number;
+  teste: string;
+};
+
 export type States = {
   openFormRegister: boolean;
   openFormEffect: boolean;
@@ -48,6 +53,9 @@ export type States = {
   searchClientName: string;
   searchClientAutoComplete: string[];
   confirmModal: ConfirmModal | null;
+  formMedicalHistoryEditId: number;
+  formMedicalHistory: formMedicalHistoryType;
+  formMedicalHistorySkeleton: boolean;
 };
 export type ActionType = {
   type: string;
@@ -82,6 +90,13 @@ export const initialStates: States = {
   searchClientName: "",
   searchClientAutoComplete: [],
   confirmModal: null,
+
+  formMedicalHistoryEditId: 0,
+  formMedicalHistory: {
+    id: 0,
+    teste: "",
+  },
+  formMedicalHistorySkeleton: false,
 };
 
 export default (state = initialStates, action: ActionType) => {

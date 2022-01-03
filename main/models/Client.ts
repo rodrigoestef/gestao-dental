@@ -5,8 +5,11 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import MedicalHistory from "./MedicalHistory";
 
 @Entity()
 export default class Client extends BaseEntity {
@@ -42,6 +45,10 @@ export default class Client extends BaseEntity {
   celular: string;
   @Column()
   lastmodify: Date;
+
+  @OneToOne(() => MedicalHistory)
+  @JoinColumn()
+  medicalHistory: Promise<MedicalHistory>;
 
   @BeforeInsert()
   @BeforeUpdate()

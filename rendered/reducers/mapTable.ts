@@ -72,6 +72,15 @@ const map: { [key: string]: (state: States, newValue: any) => States } = {
     ...state,
     confirmModal: newValue,
   }),
+  SET_OPEN_FORM_MEDICAL_HISTORY_REQUEST: (state: States, newValue: any) => ({
+    ...state,
+    formMedicalHistoryEditId: newValue,
+  }),
+
+  SET_FORM_MEDICAL_HISTORY_DATA: (state: States, newValue: any) => ({
+    ...state,
+    formMedicalHistory: newValue,
+  }),
 
   default: (state: States) => state,
 };
