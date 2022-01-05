@@ -10,6 +10,7 @@ import {
   SET_OPEN_FORM_MEDICAL_HISTORY_REQUEST,
   SET_CLOSE_FORM_MEDICAL_HISTORY_REQUEST,
   DELETE_CLIENT,
+  SUBMIT_MEDICAL_HISTORY_FORM,
 } from "@actions/types";
 import {
   OpenBasicForm,
@@ -27,6 +28,7 @@ import {
 import {
   CloseFormHistoryMedical,
   OpenFormHistoryMedical,
+  SubmitMedicalHistoryForm,
 } from "./MedicalHistoryForm";
 
 import { all, takeLatest } from "redux-saga/effects";
@@ -44,6 +46,7 @@ function* EventTable() {
     takeLatest(SET_OPEN_FORM_MEDICAL_HISTORY_REQUEST, OpenFormHistoryMedical),
     takeLatest(SET_CLOSE_FORM_MEDICAL_HISTORY_REQUEST, CloseFormHistoryMedical),
     takeLatest(DELETE_CLIENT, DeleteClient),
+    takeLatest(SUBMIT_MEDICAL_HISTORY_FORM, SubmitMedicalHistoryForm),
   ]);
 }
 

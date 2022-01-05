@@ -1,7 +1,7 @@
 import {
-  AfterInsert,
   BaseEntity,
   BeforeInsert,
+  BeforeRemove,
   BeforeUpdate,
   Column,
   Entity,
@@ -54,5 +54,11 @@ export default class Client extends BaseEntity {
   @BeforeUpdate()
   CreateLastModdifyValue() {
     this.lastmodify = new Date();
+  }
+  @BeforeRemove()
+  deleteMedicalHistory() {
+    this.medicalHistory.then((history) => {
+      history.remove();
+    });
   }
 }

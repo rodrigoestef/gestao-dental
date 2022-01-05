@@ -8,3 +8,11 @@ export const getMedicalHistoryByUserId = (
   ipcRenderer
     .invoke("integration", ["medicalHistory@get", id])
     .then(defaultMiddleWare);
+
+export const CreateMedicalHistory = (
+  model: formMedicalHistoryType,
+  userid: number
+): Promise<boolean> =>
+  ipcRenderer
+    .invoke("integration", ["medicalHistory@createOrUpdate", { model, userid }])
+    .then(defaultMiddleWare);
