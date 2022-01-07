@@ -8,7 +8,7 @@ export type RadioType = {
 
 interface Types {
   tooltip: string;
-  name?: string;
+  name: string;
   group: RadioType[];
   value?: number | string;
   error?: boolean;
@@ -24,12 +24,12 @@ const RadioGroup: React.FC<Types> = (props) => (
           <Radio
             checked={props.value === element.value}
             onChange={props.onChange}
-            id={`${element.value}_${index}`}
+            id={`${props.name}_${index}`}
             value={element.value}
             name={props.name}
           />
           <Tooltip title={props.tooltip} arrow>
-            <Label error={props.error} htmlFor={`${element.value}_${index}`}>
+            <Label error={props.error} htmlFor={`${props.name}_${index}`}>
               <span>{element.label}</span>
             </Label>
           </Tooltip>
