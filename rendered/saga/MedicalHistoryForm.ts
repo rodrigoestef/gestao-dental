@@ -55,7 +55,7 @@ export const SubmitMedicalHistoryForm = function* (a: ActionType) {
     yield CreateMedicalHistory(model, formMedicalHistoryEditId);
     yield put(
       SetNotify({
-        text: "Histórico médico criado com sucesso",
+        text: "Histórico médico salvo com sucesso",
         variant: "success",
       })
     );
