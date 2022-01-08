@@ -18,10 +18,10 @@ import { SetNotify } from "@actions/dispachs/Notifys";
 
 export const OpenFormHistoryMedical = function* () {
   const { formMedicalHistoryEditId }: States = yield select();
+  yield LoadFormByUserId(formMedicalHistoryEditId);
   yield put(SetOpenMedicalHistory(true));
   yield delay(100);
   yield put(SetOpenFormMedicalHistoryEffect(true));
-  yield LoadFormByUserId(formMedicalHistoryEditId);
 };
 export const CloseFormHistoryMedical = function* () {
   yield put(SetOpenFormMedicalHistoryEffect(false));

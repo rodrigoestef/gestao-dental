@@ -1,10 +1,43 @@
 import Client from "../models/Client";
-import MedicalHistory from "../models/MedicalHistory";
+import { MedicalHistoryRepository } from "../repositorys/MedicalHistoryRepository";
 
-interface Model {
+export interface Model {
   userid: number;
   id: number;
-  teste: string;
+  disease: string;
+  hasMedicalTreatment: string;
+  useMedicine: string;
+  hasAllergy: string;
+  hasHypertension: boolean;
+  hasDiabetes: boolean;
+  hasUlcer: boolean;
+  hasSyphilis: boolean;
+  hasHerpes: boolean;
+  hasTuberculosis: boolean;
+  hasHeartDisease: boolean;
+  hasGonorrhea: boolean;
+  hasKidneyProblems: boolean;
+  hasHepatopathyBorC: boolean;
+  hasHematologicalDiseases: boolean;
+  hasAnotherDisease: string;
+  hasSurgery: string;
+  hasScarringProblem: string;
+  hasBleedingProblem: string;
+  bloodTransfusion: string;
+  isPregnant: string;
+  isBreastfeeding: string;
+  menstruationProblem: string;
+  halitosis: string;
+  hygiene: string;
+  hygieneFrequency: string;
+  obs: string;
+  whiteLesion: string;
+  gums: string;
+  others: string;
+  littleBoard: string;
+  lotOfPlaque: string;
+  littleCalculus: string;
+  lotOfCalculus: string;
 }
 
 interface Res {
@@ -22,13 +55,8 @@ class MedicalHistoryController {
   async createOrUpdate(res: Res) {
     const { model, userid } = res;
     const client = await Client.findOneOrFail({ id: userid });
-    const medicalHistory = new MedicalHistory();
+    const medicalHistory = await MedicalHistoryRepository.create(model);
 
-    if (model.id > 0) {
-      medicalHistory.id = model.id;
-    }
-    medicalHistory.teste = model.teste;
-    await medicalHistory.save();
     client.medicalHistory = Promise.resolve(medicalHistory);
     await client.save();
     return true;

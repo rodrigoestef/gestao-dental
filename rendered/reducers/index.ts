@@ -35,7 +35,40 @@ export type ConfirmModal = {
 
 export type formMedicalHistoryType = {
   id: number;
-  teste: string;
+  disease: string;
+  hasMedicalTreatment: string;
+  useMedicine: string;
+  hasAllergy: string;
+  hasHypertension: boolean;
+  hasDiabetes: boolean;
+  hasUlcer: boolean;
+  hasSyphilis: boolean;
+  hasHerpes: boolean;
+  hasTuberculosis: boolean;
+  hasHeartDisease: boolean;
+  hasGonorrhea: boolean;
+  hasKidneyProblems: boolean;
+  hasHepatopathyBorC: boolean;
+  hasHematologicalDiseases: boolean;
+  hasAnotherDisease: string;
+  hasSurgery: string;
+  hasScarringProblem: string;
+  hasBleedingProblem: string;
+  bloodTransfusion: string;
+  isPregnant: string;
+  isBreastfeeding: string;
+  menstruationProblem: string;
+  halitosis: string;
+  hygiene: string;
+  hygieneFrequency: string;
+  obs: string;
+  whiteLesion: string;
+  gums: string;
+  others: string;
+  littleBoard: string;
+  lotOfPlaque: string;
+  littleCalculus: string;
+  lotOfCalculus: string;
 };
 
 export type States = {
@@ -94,7 +127,40 @@ export const initialStates: States = {
   formMedicalHistoryEditId: 0,
   formMedicalHistory: {
     id: 0,
-    teste: "",
+    disease: "",
+    hasMedicalTreatment: "",
+    useMedicine: "",
+    hasAllergy: "",
+    hasHypertension: false,
+    hasDiabetes: false,
+    hasUlcer: false,
+    hasSyphilis: false,
+    hasHerpes: false,
+    hasTuberculosis: false,
+    hasHeartDisease: false,
+    hasGonorrhea: false,
+    hasKidneyProblems: false,
+    hasHepatopathyBorC: false,
+    hasHematologicalDiseases: false,
+    hasAnotherDisease: "",
+    hasSurgery: "",
+    hasScarringProblem: "",
+    hasBleedingProblem: "",
+    bloodTransfusion: "",
+    isPregnant: "",
+    isBreastfeeding: "",
+    menstruationProblem: "",
+    halitosis: "",
+    hygiene: "",
+    hygieneFrequency: "",
+    obs: "",
+    whiteLesion: "",
+    gums: "",
+    others: "",
+    littleBoard: "",
+    lotOfPlaque: "",
+    littleCalculus: "",
+    lotOfCalculus: "",
   },
   formMedicalHistorySkeleton: false,
 };
