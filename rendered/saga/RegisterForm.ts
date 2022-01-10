@@ -24,6 +24,7 @@ import {
 import {
   createClientRequest,
   editClientRequest,
+  exportClientRequest,
 } from "@services/clientServices";
 import { searchCep, CepType } from "@services/searchCep";
 
@@ -108,4 +109,9 @@ export const EditClient = function* (a: ActionType) {
   yield put(setFormRegisterCLientId(id));
   yield put(SetRegisterFormData(a.newValue));
   yield put(SendOpenRequest());
+};
+
+export const ExportClient = function* (a: ActionType) {
+  const id: number = a.newValue;
+  exportClientRequest(id);
 };

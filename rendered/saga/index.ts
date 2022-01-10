@@ -11,6 +11,7 @@ import {
   SET_CLOSE_FORM_MEDICAL_HISTORY_REQUEST,
   DELETE_CLIENT,
   SUBMIT_MEDICAL_HISTORY_FORM,
+  EXPORT_CLIENT,
 } from "@actions/types";
 import {
   OpenBasicForm,
@@ -18,6 +19,7 @@ import {
   SubmitFormRegister,
   SearchCep,
   EditClient,
+  ExportClient,
 } from "./RegisterForm";
 import {
   LoadDataRequest,
@@ -47,6 +49,7 @@ function* EventTable() {
     takeLatest(SET_CLOSE_FORM_MEDICAL_HISTORY_REQUEST, CloseFormHistoryMedical),
     takeLatest(DELETE_CLIENT, DeleteClient),
     takeLatest(SUBMIT_MEDICAL_HISTORY_FORM, SubmitMedicalHistoryForm),
+    takeLatest(EXPORT_CLIENT, ExportClient),
   ]);
 }
 

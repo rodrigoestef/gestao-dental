@@ -25,3 +25,4 @@ app.whenReady().then(() => {
 });
 
 ipcMain.handle("integration", Controllers);
+ipcMain.on("integration", Controllers);

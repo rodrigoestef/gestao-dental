@@ -33,3 +33,6 @@ export const searchClientName = (e: string): Promise<string[]> =>
   ipcRenderer
     .invoke("integration", ["client@searchName", e])
     .then(defaultMiddleWare);
+
+export const exportClientRequest = (e: number) =>
+  ipcRenderer.sendSync("integration", ["client@export", e]);
