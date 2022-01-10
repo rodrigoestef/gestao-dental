@@ -33,7 +33,7 @@ const FlootingRightContainer: React.FC<Props & DispachProps> = ({
 }) => {
   return (
     <Container open={openFormEffect}>
-      <Grid container justifyContent="space-between">
+      <Grid container alignItems="center" justifyContent="space-between">
         <GobackButton onClick={SendCloseRequest}>
           <span>Voltar</span>
           <RightArrow />
