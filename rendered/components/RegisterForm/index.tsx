@@ -86,7 +86,7 @@ const RegisterForm: React.FC<StateToProps & DispatchToProps> = (props) => {
               value={formik.values.responsavel}
               onChange={formik.handleChange}
               name="responsavel"
-              label="Responsavel"
+              label="Responsável"
             />
           </Grid>
           <Grid item xs={6}>
