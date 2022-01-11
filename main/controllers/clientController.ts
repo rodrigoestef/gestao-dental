@@ -1,5 +1,7 @@
 import ClientRepository from "../repositorys/ClientRepository";
 import { dialog } from "electron";
+import createServeFactory from "../factorys/createServeFactory";
+import buildPdf from "../factorys/buildPdf";
 export interface clientType {
   nome: string;
   responsavel?: string;
@@ -62,13 +64,18 @@ class clientController {
     return await ClientRepository.searchName(search);
   }
 
-  async export() {
+  async export(userId: number) {
     const res = await dialog.showSaveDialog({
       title: "Exportar em pdf",
       filters: [{ name: "PDF", extensions: ["pdf"] }],
     });
-    if (!res.canceled) {
-      console.log(res);
+    if (!res.canceled && res.filePath) {
+      createServeFactory("client").then();
+      await buildPdf(res.filePath, userId);
+      dialog.showMessageBox({
+        message: "Arquivo criado com sucesso",
+        type: "info",
+      });
     }
   }
 }
