@@ -6,12 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>
         <%=entity.nome%>
     </h1>
+    <p>
+        Responsavel: <%=entity.responsavel%>
+    </p>
+    <p>
+        Rg: <%=entity.rg%>
+    </p>
+    <p>
+        Orgão expedidor: <%=entity.rgorgao%>
+    </p>
+    <p>
+        Cpf: <%=entity.cpf%>
+    </p>
+    <p>
+        Gênero: <%=entity.genero==='M' ? 'Masculino' : 'Feminino' %>
+    </p>
+    <p>
+        Nascimento: <%=new Intl.DateTimeFormat('en-GB',{timeZone:'UTC'}).format(entity.nascimento)%>
+    </p>
+    <p>
+        Profissao: <%=entity.profissao%>
+    </p>
+    <p>
+        Cep: <%=entity.cep%>
+    </p>
+    <p>
+        Endereco: <%=entity.endereco%>
+    </p>
+    <p>
+        Bairro: <%=entity.bairro%>
+    </p>
+    <p>
+        Cidade: <%=entity.cidade%>
+    </p>
+    <p>
+        Telefone: <%=entity.telefone%>
+    </p>
+    <p>
+        Celular: <%=entity.celular%>
+    </p>
 
 </body>
 
