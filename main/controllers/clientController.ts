@@ -73,7 +73,7 @@ class clientController {
       createServeFactory("client").then();
       await buildPdf(res.filePath, userId);
       dialog.showMessageBox({
-        message: "Arquivo criado com sucesso",
+        message: "Arquivo criado com sucesso!",
         type: "info",
       });
     }
