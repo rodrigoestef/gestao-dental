@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as exportSvg } from "@assets/icons/export.svg";
 
 interface ContainerProps {
   open: boolean;
@@ -30,4 +31,15 @@ export const GobackButton = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+`;
+
+export const ExportIcon = styled(exportSvg)`
+  fill: var(--primary-color);
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  transition: 0.1s;
+  &:hover {
+    fill: var(--hover-primary-color);
+  }
 `;

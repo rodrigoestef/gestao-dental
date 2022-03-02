@@ -16,3 +16,6 @@ export const CreateMedicalHistory = (
   ipcRenderer
     .invoke("integration", ["medicalHistory@createOrUpdate", { model, userid }])
     .then(defaultMiddleWare);
+
+export const exportClientRequest = (e: number) =>
+  ipcRenderer.sendSync("integration", ["medicalHistory@export", e]);

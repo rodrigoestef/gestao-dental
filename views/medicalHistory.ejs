@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <%=entity.nome%>
+    </h1>
+    <p>
+        Sofre de alguma doença Qual?: <%=entity.disease?entity.disease:'não'%>
+    </p>
+    <p>
+        Está em tratamento médico? Qual? Onde?: <%=entity.hasMedicalTreatment?entity.hasMedicalTreatment:'não'%>
+    </p>
+    <p>
+        Faz uso de algum medicamento ou produto? Qual? Dosagem?: <%=entity.useMedicine?entity.useMedicine:'não'%>
+    </p>
+    <p>
+        É alergico a algum medicamento ou produto? Qual?: <%=entity.hasAllergy?entity.hasAllergy:'não'%>
+    </p>
+    <p>
+        Tem ou teve hipertensão?: <%=entity.hasHypertension?entity.hasHypertension:'não'%>
+    </p>
+    <p>
+        Tem ou teve diabete?: <%=entity.hasDiabetes?entity.hasDiabetes:'não'%>
+    </p>
+    <p>
+        Tem ou teve ulcera?: <%=entity.hasUlcer?entity.hasUlcer:'não'%>
+    </p>
+    <p>
+        Tem ou teve sifilis?: <%=entity.hasSyphilis?entity.hasSyphilis:'não'%>
+    </p>
+    <p>
+        Tem ou teve herpes?: <%=entity.hasHerpes?entity.hasHerpes:'não'%>
+    </p>
+    <p>
+        Tem ou teve tuberculose?: <%=entity.hasTuberculosis?entity.hasTuberculosis:'não'%>
+    </p>
+    <p>
+        Tem ou teve doença cardiaca?: <%=entity.hasHeartDisease?entity.hasHeartDisease:'não'%>
+    </p>
+    <p>
+        Tem ou teve hepatite B ou C?: <%=entity.hasHepatopathyBorC?entity.hasHepatopathyBorC:'não'%>
+    </p>
+    <p>
+        Tem ou teve doenças hematológicas?: <%=entity.hasHematologicalDiseases?entity.hasHematologicalDiseases:'não'%>
+    </p>
+    <p>
+        Tem ou teve outras doencas?: <%=entity.hasAnotherDisease?entity.hasAnotherDisease:'não'%>
+    </p>
+    <p>
+        Submeteu-se a alguma cirurgia nos últimos 5 anos?: <%=entity.hasSurgery?entity.hasSurgery:'não'%>
+    </p>
+    <p>
+        Submeteu-se a alguma cirurgia nos últimos 5 anos?: <%=entity.hasSurgery?entity.hasSurgery:'não'%>
+    </p>
+    <p>
+        Tem problema de cicatrização?: <%=entity.hasScarringProblem%>
+    </p>
+    <p>
+        Tem problema de hemorragia?: <%=entity.hasBleedingProblem%>
+    </p>
+    <p>
+        Submeteu-se a transfusão de sangue nos últimos anos? Motivo?:
+        <%=entity.bloodTransfusion?entity.bloodTransfusion:'não'%>
+    </p>
+    <p>
+        Submeteu-se a transfusão de sangue nos últimos anos? Motivo?:
+        <%=entity.bloodTransfusion?entity.bloodTransfusion:'não'%>
+    </p>
+    <% if(entity.isPregnant){ %>
+        <p>
+            Está gravida?: <%=entity.isPregnant%>
+        </p>
+        <% } %>
+            <% if(entity.isBreastfeeding){ %>
+                <p>
+                    Está amamentando?: <%=entity.isBreastfeeding==='T' ? 'sim' : 'não' %>
+                </p>
+                <% } %>
+                    <% if(entity.menstruationProblem){ %>
+                        <p>
+                            Algum problema de mentruação? qual?: <%=entity.menstruationProblem %>
+                        </p>
+                        <% } %>
+                            <p>
+                                Halitose: <%=entity.halitosis%>
+                            </p>
+                            <p>
+                                Higiene: <%=entity.hygiene%>
+                            </p>
+                            <p>
+                                Frequencia da higiene: <%=entity.hygieneFrequency%>
+                            </p>
+                            <% if(entity.obs){ %>
+                                <p>
+                                    O.B.S.: <%=entity.obs%>
+                                </p>
+                                <% } %>
+                                    <p>
+                                        Presença de lesão branca? Localização?:
+                                        <%=entity.whiteLesion?entity.whiteLesion:'não'%>
+                                    </p>
+                                    <p>
+                                        Gengivas:<%=entity.gums%>
+                                    </p>
+                                    <% if(entity.others){ %>
+                                        <p>
+                                            Outros: <%=entity.others%>
+                                        </p>
+                                        <% } %>
+                                            <h4>PLACA</h4>
+                                            <p>
+                                                Pouca: Elem. Dentário: <%=entity.littleBoard?entity.littleBoard:'não'%>
+                                            </p>
+                                            <p>
+                                                Muita: Elem. Dentário: <%=entity.lotOfPlaque?entity.lotOfPlaque:'não'%>
+                                            </p>
+                                            <h4>CÁLCULO</h4>
+                                            <p>
+                                                Pouco: Elem. Dentário:
+                                                <%=entity.littleCalculus?entity.littleCalculus:'não'%>
+                                            </p>
+                                            <p>
+                                                Muita: Elem. Dentário:
+                                                <%=entity.lotOfCalculus?entity.lotOfCalculus:'não'%>
+                                            </p>
+</body>
+
+</html>

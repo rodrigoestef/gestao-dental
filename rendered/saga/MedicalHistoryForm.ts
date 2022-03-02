@@ -12,6 +12,7 @@ import { put, delay, select } from "redux-saga/effects";
 import {
   CreateMedicalHistory,
   getMedicalHistoryByUserId,
+  exportClientRequest,
 } from "@services/medicalHistoryServices";
 import { SetMedicalHistoryData } from "@actions/dispachs/FormMedicalHistoryEvents";
 import { SetNotify } from "@actions/dispachs/Notifys";
@@ -64,6 +65,20 @@ export const SubmitMedicalHistoryForm = function* (a: ActionType) {
     yield put(
       SetNotify({
         text: "Não foi possivel criar histórico médico",
+        variant: "error",
+      })
+    );
+  }
+};
+
+export const ExportMedicalHistory = function* (a: ActionType) {
+  const id: number = a.newValue;
+  try {
+    yield exportClientRequest(id);
+  } catch (_) {
+    yield put(
+      SetNotify({
+        text: "Não foi posivel exportar histórico médico",
         variant: "error",
       })
     );

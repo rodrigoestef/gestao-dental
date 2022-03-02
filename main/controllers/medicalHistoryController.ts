@@ -1,3 +1,6 @@
+import { dialog } from "electron";
+import buildPdf from "../factorys/buildPdf";
+import createServeFactory from "../factorys/createServeFactory";
 import Client from "../models/Client";
 import { MedicalHistoryRepository } from "../repositorys/MedicalHistoryRepository";
 
@@ -60,6 +63,20 @@ class MedicalHistoryController {
     client.medicalHistory = Promise.resolve(medicalHistory);
     await client.save();
     return true;
+  }
+  async export(medicalHistoryId: number) {
+    const res = await dialog.showSaveDialog({
+      title: "Exportar em pdf",
+      filters: [{ name: "PDF", extensions: ["pdf"] }],
+    });
+    if (!res.canceled && res.filePath) {
+      createServeFactory("medicalHistory").then();
+      await buildPdf(res.filePath, medicalHistoryId);
+      dialog.showMessageBox({
+        message: "Arquivo criado com sucesso!",
+        type: "info",
+      });
+    }
   }
 }
 

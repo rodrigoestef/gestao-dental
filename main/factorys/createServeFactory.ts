@@ -2,10 +2,17 @@ import express from "express";
 import http from "http";
 import Client from "../models/Client";
 
-type Type = "client";
+type Type = "client" | "medicalHistory";
 
 const getEntityTable: Record<Type, (id: number) => Promise<any>> = {
   client: (id) => Client.findOneOrFail({ where: { id } }),
+  medicalHistory: async (id) => {
+    const client = await Client.findOneOrFail({
+      where: { medicalHistory: id },
+    });
+    const medicalHistory = await client.medicalHistory;
+    return { nome: client.nome, ...medicalHistory };
+  },
 };
 
 export default async (type: Type): Promise<void> => {
