@@ -1,13 +1,13 @@
 {
-    "type": "sqlite",
-    "database":"./database.sqlite",
-    "synchronize": false,
-    "logging": false,
-    "migrations": [
-       "migration/*.ts"
-    ],
-    "cli":{
-      "migrationsDir": "migration",
+   "type": "sqlite",
+   "database": "./database.sqlite",
+   "synchronize": false,
+   "logging": false,
+   "migrations": [
+      "migration/*.ts"
+   ],
+   "cli": {
+      "migrationsDir": "main/migration",
       "entitiesDir": "main/models"
-    }
- } 
+   }
+}
