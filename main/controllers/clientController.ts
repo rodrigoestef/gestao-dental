@@ -73,6 +73,7 @@ class clientController {
       createServeFactory("client").then();
       await buildPdf(res.filePath, userId);
       dialog.showMessageBox({
+        title: "Gestao Dental",
         message: "Arquivo criado com sucesso!",
         type: "info",
       });

@@ -73,6 +73,7 @@ class MedicalHistoryController {
       createServeFactory("medicalHistory").then();
       await buildPdf(res.filePath, medicalHistoryId);
       dialog.showMessageBox({
+        title: "Gestao Dental",
         message: "Arquivo criado com sucesso!",
         type: "info",
       });
