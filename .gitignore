@@ -5,3 +5,4 @@ build/electron/**/*
 build/front
 database.sqlite
 chrome-win
+dist

@@ -5,12 +5,13 @@
   "license": "MIT",
   "scripts": {
     "electron-watch": "tsc --watch -p main/tsconfig.json",
-    "electron-start": "nodemon -w build/ --exec \"electron . \" ",
+    "electron-start": "cross-env NODE_ENV=development nodemon -w build/ --exec \"electron . \" ",
     "electron": "concurrently \" yarn electron-watch \" \" yarn electron-start \" ",
     "react-start": "webpack --watch --mode=development",
     "start": "concurrently \" yarn electron\" \"yarn react-start\"",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
-    "prestart": "rm database.sqlite && yarn typeorm migration:run"
+    "build": "electron-builder",
+    "prebuild": "webpack --mode=production && tsc -p main/tsconfig.json"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -29,8 +30,10 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
     "concurrently": "^6.2.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.2.0",
     "electron": "^13.1.5",
+    "electron-builder": "^22.14.13",
     "formik": "^2.2.9",
     "html-webpack-plugin": "^5.3.2",
     "nodemon": "^2.0.9",
@@ -57,5 +60,25 @@
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
     "typeorm": "^0.2.37"
+  },
+  "build": {
+    "icon": "build/electron/icon.png",
+    "appId": "re.gentaodental.estef",
+    "productName": "Gestão Dental",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*"
+    ],
+    "extraFiles": [
+      "chrome-win/**/*",
+      "views/**/*"
+    ],
+    "nsis": {
+      "perMachine": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false
+    }
   }
 }
